@@ -1,0 +1,15 @@
+insert into employee (id, name, surname, patronymic, phone_number, email) values (1, 'Barbaraanne', 'McGunley', 'Annotée', '662-324-5842', 'bmcgunley0@berkeley.edu');
+insert into employee (id, name, surname, patronymic, phone_number, email) values (2, 'Clarke', 'Tortoishell', 'Cloé', '252-432-6430', 'ctortoishell1@mashable.com');
+insert into employee (id, name, surname, patronymic, phone_number, email) values (3, 'Rudolfo', 'Middup', 'Uò', '783-366-7707', 'rmiddup2@jimdo.com');
+insert into employee (id, name, surname, patronymic, phone_number, email) values (4, 'Joachim', 'Ormerod', 'Dafnée', '825-790-8880', 'jormerod3@nydailynews.com');
+insert into employee (id, name, surname, patronymic, phone_number, email) values (5, 'Hobard', 'Chown', 'Märta', '596-422-8453', 'hchown4@usda.gov');
+insert into employee (id, name, surname, patronymic, phone_number, email) values (6, 'Wilow', 'Gutierrez', 'Miléna', '816-615-9452', 'wgutierrez5@ucsd.edu');
+insert into employee (id, name, surname, patronymic, phone_number, email) values (7, 'Worthy', 'Domerq', 'Simplifiés', '523-921-2829', 'wdomerq6@tiny.cc');
+insert into employee (id, name, surname, patronymic, phone_number, email) values (8, 'Anabel', 'Bein', 'Pélagie', '792-299-0861', 'abein7@ucoz.com');
+insert into employee (id, name, surname, patronymic, phone_number, email) values (9, 'Thatch', 'Chataignier', 'Angélique', '127-319-9002', 'tchataignier8@forbes.com');
+insert into employee (id, name, surname, patronymic, phone_number, email) values (10, 'Rhea', 'Petch', 'Mahélie', '528-310-2237', 'rpetch9@jimdo.com');
+insert into employee (id, name, surname, patronymic, phone_number, email) values (11, 'Rosina', 'Badland', 'Angélique', '713-962-8606', 'rbadlanda@mac.com');
+insert into employee (id, name, surname, patronymic, phone_number, email) values (12, 'Maren', 'Clay', 'Loïca', '652-623-1410', 'mclayb@virginia.edu');
+insert into employee (id, name, surname, patronymic, phone_number, email) values (13, 'Karin', 'McEachern', 'Maëlyss', '633-538-3846', 'kmceachernc@dion.ne.jp');
+insert into employee (id, name, surname, patronymic, phone_number, email) values (14, 'Shari', 'Chansonnau', 'Régine', '737-151-3424', 'schansonnaud@uiuc.edu');
+insert into employee (id, name, surname, patronymic, phone_number, email) values (15, 'Batsheva', 'Maps', 'Lài', '933-220-7512', 'bmapse@ebay.com');

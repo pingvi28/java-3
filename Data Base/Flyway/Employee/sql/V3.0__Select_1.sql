@@ -1,0 +1,1 @@
+SELECT Manager_id,COUNT(Worker_id) FROM subordination GROUP BY Manager_id;
