@@ -1,0 +1,21 @@
+CREATE TABLE sequence (
+    part_of_the_lot1 VARCHAR,
+    part_of_the_lot2 VARCHAR);
+
+INSERT INTO sequence  VALUES ('a', 'c');
+INSERT INTO sequence  VALUES ('a', 'c');
+INSERT INTO sequence  VALUES ('b', 'd');
+INSERT INTO sequence  VALUES ('c','b');
+INSERT INTO sequence  VALUES ('d','null');
+
+
+select (select count(*)
+        from ((select part_of_the_lot1 from sequence) intersect (select part_of_the_lot2 from sequence)) as intersected )/
+       (select count(*)
+        from ((select part_of_the_lot1 from sequence) union (select part_of_the_lot2 from sequence)) as united)::float8;
+
+WITH _numerator AS(
+    (select part_of_the_lot1 from sequence) intersect (select part_of_the_lot2 from sequence)),
+    _denominator AS(
+    (select part_of_the_lot1 from sequence) union (select part_of_the_lot2 from sequence))
+select (select count(*)::float8 from _numerator) / (select count(*)::float8 from _denominator);
