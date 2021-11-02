@@ -1,0 +1,24 @@
+create table firstDB(
+    id serial UNIQUE PRIMARY KEY NOT NULL,
+    first_name varchar(255) NOT NULL,
+    last_name varchar(255) NOT NULL,
+    email  varchar(255),
+    MAC_address  varchar(20),
+    ip_address  varchar(25)
+);
+
+--вставить pаномные данные
+
+-перекопирование
+insert into firstDB(first_name, last_name, email, MAC_address, ip_address)
+select first_name, last_name, email, MAC_address, ip_address from firstDB;
+
+-- проверить количество строк
+select count(*) from firstDB;
+
+-- сколько места он занимает
+SELECT pg_size_pretty( pg_total_relation_size('firstDB') );
+
+--огрничение запроса
+insert into firstDB(first_name, last_name, email, MAC_address, ip_address)
+select first_name, last_name, email, MAC_address, ip_address from firstDB LIMIT 9862400;
