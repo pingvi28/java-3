@@ -1,0 +1,137 @@
+/* Container */
+ .container {
+	 width: 100%;
+	 margin: 15px auto;
+}
+/* Intro */
+.intro__inner {
+  width: 100%;
+  max-width: 880px;
+  margin: 0 auto;
+  color: #fff;
+  text-align: center;
+}
+ .intro__title {
+	 font-size: 120px;
+	 font-weight: 700;
+	 font-size: 40px;
+	 text-transform: uppercase;
+	 text-align: center;
+	 line-height: .9;
+}
+.intro__title:after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  margin: 60px auto 0;
+  background-color: #fff;
+  margin-bottom: 60px;
+}
+.intro_glow {
+  text-align: center;
+  -webkit-animation: intro_glow 1s ease-in-out infinite alternate;
+  -moz-animation:intro_glow 1s ease-in-out infinite alternate;
+  animation: intro_glow 1s ease-in-out infinite alternate;
+}
+/*password */
+.password-control{
+    vertical-align: middle;
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	background: url(https://snipp.ru/demo/495/view.svg) 0 0 no-repeat;
+}
+.password-control.view {
+	background: url(https://snipp.ru/demo/495/no-view.svg) 0 0 no-repeat;
+}
+.password-control2{
+    vertical-align: middle;
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	background: url(https://snipp.ru/demo/495/view.svg) 0 0 no-repeat;
+}
+.password-control2.view {
+	background: url(https://snipp.ru/demo/495/no-view.svg) 0 0 no-repeat;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: absolute; /* Stay in place */
+    z-index: 2; /* Sit on top */
+    left: 0;
+    top: 0;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #726672;
+    margin: 5px auto; /* 15% from the top and centered */
+    border: 1px solid #888;
+    width: 90%; /* Could be more or less, depending on screen size */
+}
+.check{
+  margin-top: 10px;
+  margin-left: 0;
+}
+.create_ac{
+  margin-top: 40px;
+  background-color: rgba(129, 167, 170,0.2);
+}
+.create_ac::after{
+  content: "";
+  display: block;
+  width: 30%;
+  height: 2px;
+  margin: 5px auto 0;
+  background-color: #c1c1b7;
+}
+
+/* Form */
+.pas{
+    margin-left: 20px;
+}
+.item {
+  border-radius:10px;
+    padding:10px 25px;
+}
+.form-control{
+    width: 45%;
+}
+
+/* Add zoom animation for text*/
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)}
+    to {-webkit-transform: scale(1)}
+}
+@keyframes animatezoom {
+    from {transform: scale(0)}
+    to {transform: scale(1)}
+}
+/* Используем псевдоэлемент after для оформления самой плашки, но при этом скрываем ее, так как она должна появляться только при наведении */
+.hover:after
+{content: attr(data-title);
+    display: none;position: absolute;
+    bottom: 130%;
+    left: 0px;
+    background-color: #fff;
+    color: #3aaeda;
+    padding: 5px;
+    text-align: center;
+    -moz-box-shadow: 0 1px 1px rgba(0,0,0,.16);
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.16);
+    box-shadow: 0 1px 1px rgba(0,0,0,.16);font-size: 12px;}
+/* Добавляем свойство, чтобы при наведении на элемент плашка с подсказкой появилась */
+.hover:hover:after{display: block;}

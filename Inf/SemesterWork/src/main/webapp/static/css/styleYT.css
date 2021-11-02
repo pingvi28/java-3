@@ -1,0 +1,28 @@
+ytd-rich-item-renderer[layout-style="quarter"] {
+    width: 250px;
+    padding: 0;
+}
+
+ytd-rich-grid-video-renderer {
+    --ytd-rich-grid-video-renderer-min-width: 250px;
+}
+
+ytd-rich-grid-video-renderer:not([tiny]) #video-title.ytd-rich-grid-video-renderer {
+  font-size: 1.3rem;
+}
+
+ytd-rich-grid-video-renderer:not([tiny]) .metadata-line.ytd-rich-grid-video-renderer {
+    font-size: 1rem;
+}
+
+yt-formatted-string[ellipsis-truncate] {
+    overflow: visible;
+}
+
+.metadata-line.ytd-rich-grid-video-renderer {
+    display: inline;
+}
+
+.myRow{
+    padding : 0;
+}
