@@ -1,0 +1,3 @@
+pgbench -h localhost -p 5432 -U postgres -f C:\Users\79179\Desktop\pgbench\test1.sql -c 1 -T 300 -r PGbench_test
+
+pgbench -h rc1c-edkx6axwh3chvb4k.mdb.yandexcloud.net -p 6432 -U Di -f C:\Users\79179\Desktop\pgbench\test1.sql -c 1 -T 300 -r PGbench
