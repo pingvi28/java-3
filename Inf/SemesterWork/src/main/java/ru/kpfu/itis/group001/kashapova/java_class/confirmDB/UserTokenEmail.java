@@ -45,20 +45,20 @@ public class UserTokenEmail extends ConfirmUsersConnect {
         }
     }
 
-    public static boolean updateToken(int userID,String email){
+    public static boolean updateToken(int userID,String email) throws SQLException {
         try (Connection connection = DriverManager.getConnection(url, user, passwordDB);
              Statement statement = connection.createStatement()) {
             Class.forName("org.postgresql.Driver");
             ResultSet rs = statement.executeQuery("select * from " + tableConfirmUsers + " where id=" + userID +";");
 
             if (!rs.next()) return false; //нет пользователя
-
             rs = statement.executeQuery("update " + tableConfirmUsers + " set token = " + MyHash.createHashPassword(email) + "where id= " + userID +";");
             return true;
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("(UTE#updateToken) " + e.getMessage() + " : " + e.getCause());
             return false;
+        }finally {
+            connection.close();
         }
-
     }
 }

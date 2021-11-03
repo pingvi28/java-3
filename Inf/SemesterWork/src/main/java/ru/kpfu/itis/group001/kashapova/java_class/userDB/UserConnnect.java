@@ -21,7 +21,6 @@ public class UserConnnect {
     protected static String user;
     protected static String passwordDB;
     protected static String tableWithUser;
-    protected static UserTokenEmail userTokenEmail = new UserTokenEmail();
 
     /**
      * конструктор для присваивания параметров бд и установления связи
@@ -31,15 +30,5 @@ public class UserConnnect {
         user = DBproperties.user;
         passwordDB = DBproperties.passwordDB;
         tableWithUser = DBproperties.tableUserLampCorner;
-        connect();
-    }
-
-    public static void connect() {
-        try {
-            connection = DriverManager.getConnection(url, user, passwordDB);
-            statement = connection.createStatement();
-        } catch (SQLException e) {
-            System.out.println("(UDB#connect) " + e.getMessage() + " : " + e.getCause());
-        }
     }
 }

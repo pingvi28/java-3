@@ -75,8 +75,8 @@
 /* Modal Content/Box */
 
 .create_ac::after{
-  margin-top: 7px;
-  margin-bottom: 20px;
+  margin-top: 10px;
+    margin-bottom: 10px;
 }
 .item {
     margin: 15px -30px 5px;
@@ -132,4 +132,11 @@
     transform: translate3d(0, -50px, 0);
     opacity: 0;
     transition: opacity .2s;
+}
+.vk{
+    width: 42px;
+}
+.ctr{
+    size: 20px;
+    background-color: rgba(0,0,0,0);
 }

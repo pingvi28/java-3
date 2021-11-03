@@ -2,11 +2,21 @@ body {
 	margin: 0;
 	font-family: 'Montserrat', sans-serif;
 	font-size: 15px;
-	color: #333;
+    color: rgba(252, 227, 138,0.7);
     line-height: 0.8;
+    overflow: hidden;
 }
-a {
+a:hover {
     text-decoration: none;
+}
+section {
+    margin-top: 45px;
+    max-height: 600px;
+    position: absolute;
+    top:20px;
+    left: 20px;
+    right: -15px;
+    overflow-y: scroll;
 }
 .wrapper {
 	width: 100%;
@@ -74,7 +84,7 @@ a {
 	margin-left: 250px
 }
 .page-content {
-	padding: 1.5rem 1.5rem 0 1.5rem
+	padding: 0 1.8rem 0 1.3rem
 }
 .wrapper.toggled .topbar {
 	left: 70px
@@ -126,7 +136,7 @@ a {
 	justify-content: left;
 	padding: 8px 15px;
 	font-size: 15px;
-	color: rgba(255 255 255 , .75);
+    color: #fce38a;
 	outline-width: 0;
 	text-overflow: ellipsis;
 	overflow: hidden;
@@ -289,4 +299,9 @@ input::placeholder {
 }
 .down{
     padding-top: 10px;
+}
+.upd{
+    display:flex;
+    justify-content: right;
+    align-items:center;
 }

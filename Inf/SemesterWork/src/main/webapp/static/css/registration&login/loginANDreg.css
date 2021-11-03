@@ -70,7 +70,6 @@
     margin-right: -50%;
     transform: translate(-50%, -50%);
 }
-
 /* Modal Content/Box */
 .modal-content {
     background-color: #726672;
@@ -83,7 +82,6 @@
   margin-left: 0;
 }
 .create_ac{
-  margin-top: 40px;
   background-color: rgba(129, 167, 170,0.2);
 }
 .create_ac::after{
@@ -91,7 +89,7 @@
   display: block;
   width: 30%;
   height: 2px;
-  margin: 5px auto 0;
+  margin: 5px auto 5px;
   background-color: #c1c1b7;
 }
 

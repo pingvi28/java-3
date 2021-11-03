@@ -49,6 +49,12 @@
                                 <div class="form-group item">
                                     <button class="btn" type="submit">Вход в аккаунт</button>
                                 </div>
+                                <span class="create_ac"></span>
+                                <span class="create_ac ctr">Войти через:&emsp;
+                                    <a href="https://oauth.vk.com/authorize?client_id=7984087&display=page&redirect_uri=http://localhost:8084/lamp/vk_auth&scope=email&response_type=code&v=5.131">
+                                        <img class="img vk" src="${pageContext.request.contextPath}/static/images/icons/vk.png">
+                                    </a>
+                                </span>
                             </div>
                             <div class="container">
                                 <span class="create_ac">Еще не  <a href="${pageContext.request.contextPath}/signUp">зарегистрировались?</a></span>
@@ -76,11 +82,9 @@
                     <div class="about_img">
                         <img class="img" src="${pageContext.request.contextPath}/static/images/loginPage/loginPic1.jpg">
                     </div>
-
                     <div class="about_text">
                         <p>Место</p>
                     </div>
-
                 </div>
                 <div class="about_item">
                     <div class="about_img">

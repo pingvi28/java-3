@@ -1,8 +1,9 @@
+
 .scroll {
   max-height: 450px;
 	position: absolute;
 	left: 20px;
-	right: -20px; /* Increase/Decrease this value for cross-browser compatibility */
+	right: -20px;
 	overflow-y: scroll;
 }
 #theme1 {
@@ -166,7 +167,7 @@ body.bg-theme15 {
 	height: 40px;
 	line-height: 40px;
 	font-size: 20px;
-	background: rgba(255 255 255 , .10);
+	background: rgba(26, 2, 96, 0.8);
 	box-shadow: 0 .3rem .6rem rgba(0, 0, 0, .13);
 	color: #fce38a;
 	text-align: center;

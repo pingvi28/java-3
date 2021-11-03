@@ -44,7 +44,6 @@ public class LoginServlet extends HttpServlet {
             Cookie userCookie = new Cookie("user_id_cookie",  Integer.toString(id));
             resp.addCookie(userCookie);
             if (remember) {
-
                 Cookie rememberCookie = new Cookie("remember_cookie", String.valueOf(true));
                 rememberCookie.setMaxAge(60*60*24*5);
                 resp.addCookie(rememberCookie);

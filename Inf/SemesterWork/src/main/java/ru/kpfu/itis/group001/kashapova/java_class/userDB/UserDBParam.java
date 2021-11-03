@@ -10,10 +10,9 @@ public class UserDBParam extends UserConnnect{
             Class.forName("org.postgresql.Driver");
             ResultSet rs = statement.executeQuery("select * from " + tableWithUser + " where id=" + user_id +";");
             if (!rs.next()) return ""; //нет пользователя
-            System.out.println(user_id + " " + rs.getString(columnName));
             return rs.getString(columnName);
         } catch (ClassNotFoundException | SQLException e) {
-            System.out.println("(UDB#return " + columnName + ":" + e.getMessage() + " : " + e.getCause());
+            System.out.println("(UDBP#return " + columnName + ":" + e.getMessage() + " : " + e.getCause());
             return "";
         }
     }

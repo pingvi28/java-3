@@ -17,7 +17,6 @@ public class MainServlet extends HttpServlet {
     private int user_idCookie;
 
     public void init(HttpServletRequest req) {
-        UserConnnect userConnnect = new UserConnnect();
         ConfirmUsersConnect confirmUsersConnect= new ConfirmUsersConnect();
 
         Cookie[] cookies = req.getCookies();
@@ -35,8 +34,8 @@ public class MainServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         init(req);
-        System.out.println(user_idCookie);
-        req.setAttribute("FirstName", UserDBParam.returnStringParam(user_idCookie,"name"));
+        UserDBParam userDBParam = new UserDBParam();
+        req.setAttribute("FirstName", userDBParam.returnStringParam(user_idCookie,"name"));
         req.getRequestDispatcher("/WEB-INF/view/indexMain.jsp").forward(req, resp);
     }
 }

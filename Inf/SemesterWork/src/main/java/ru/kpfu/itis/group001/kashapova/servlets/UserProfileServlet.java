@@ -31,6 +31,7 @@ public class UserProfileServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         init(req);
+        UserDBParam userDBParam = new UserDBParam();
         req.setAttribute("FirstName", UserDBParam.returnStringParam(user_idCookie,"name"));
 
         req.setAttribute("fullName",UserDBParam.returnStringParam(user_idCookie,"surname") + " " + UserDBParam.returnStringParam(user_idCookie,"name"));

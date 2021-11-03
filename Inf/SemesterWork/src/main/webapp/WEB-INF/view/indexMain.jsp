@@ -15,7 +15,9 @@
     <!--favicon-->
     <link rel="icon" href="${pageContext.request.contextPath}/static/images/icons/favicon.png" type="image/png"/>
     <!--plugins-->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/plugins/perfect-scrollbar/css/perfect-scrollbar.css" type="text/css"/>
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/static/plugins/perfect-scrollbar/css/perfect-scrollbar.css"
+          type="text/css"/>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/main/bootstrap.min.css" type="text/css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/main/icons.css" type="text/css"/>
@@ -29,86 +31,89 @@
 </head>
 
 <body class="bg-theme bg-theme13">
-    <!--wrapper-->
-    <div class="wrapper">
-        <!--sidebar wrapper -->
-        <div class="sidebar-wrapper" data-simplebar="true">
-            <div class="sidebar-header">
-                <div>
-                    <h4 class="logo-text">Lamp corner</h4>
-                </div>
-                <div class="toggle-icon ms-auto"><i class='bx bx-arrow-to-left'></i>
-                </div>
+<!--wrapper-->
+<div class="wrapper toggled">
+    <!--sidebar wrapper -->
+    <div class="sidebar-wrapper" data-simplebar="true">
+        <div class="sidebar-header">
+            <div>
+                <h4 class="logo-text">Lamp corner</h4>
             </div>
-            <!--navigation-->
-            <ul class="metismenu" id="menu">
-                <li>
-                    <a href="">
-                        <div class="parent-icon"><i class='bx bx-home-circle'></i>
-                        </div>
-                        <div class="menu-title">Главная страница</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="${pageContext.request.contextPath}/userProfile">
-                        <div class="parent-icon"><i class="bx bx-user-circle"></i>
-                        </div>
-                        <div class="menu-title">Личный кабинет</div>
-                    </a>
-                </li>
-            </ul>
-            <!--end navigation-->
+            <div class="toggle-icon ms-auto">
+                <i class='bx bx-arrow-to-left'></i>
+            </div>
         </div>
-        <!--end sidebar wrapper -->
-        <!--start header -->
-        <header>
-            <div class="topbar d-flex align-items-center">
-                <nav class="navbar navbar-expand">
-                    <div class="mobile-toggle-menu"><i class='bx bx-menu'></i>
+        <!--navigation-->
+        <ul class="metismenu" id="menu">
+            <li>
+                <a href="">
+                    <div class="parent-icon"><i class='bx bx-home-circle'></i>
                     </div>
-                    <div class="search-bar flex-grow-1"></div><div class="header-notifications-list"></div><div class="header-message-list"></div>
-                    <div class="user-box dropdown">
-                        <a class="d-flex dropdown-toggle-nocaret down" href="#"
-                           role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="${pageContext.request.contextPath}/static/images/profile/water.png" class="user-img" alt="user avatar">
-                            <div class="user-info ps-3">
-                                <p class="user-name mb-0">Частичка вселенной*</p>
-                                <label class="" for="first-name"></label>
-                                <h6 id="first-name">
-                                    <c:if test="${not empty FirstName}">
-                                        ${FirstName}
-                                    </c:if>
-                                </h6>
-                            </div>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="${pageContext.request.contextPath}/userProfile"><i
-                                    class="bx bx-user"></i><span>Профиль</span></a>
-                            </li>
-                            <li>
-                                <div class="dropdown-divider mb-0"></div>
-                            </li>
-                            <li><a class="dropdown-item" href="javascript:;"><i
-                                    class='bx bx-log-out-circle'></i><span>Выйти</span></a>
-                            </li>
-                        </ul>
+                    <div class="menu-title">Главная страница</div>
+                </a>
+            </li>
+            <li>
+                <a href="${pageContext.request.contextPath}/userProfile">
+                    <div class="parent-icon"><i class="bx bx-user-circle"></i>
                     </div>
-                </nav>
-            </div>
-        </header>
-        <!--end header -->
+                    <div class="menu-title">Личный кабинет</div>
+                </a>
+            </li>
+        </ul>
+        <!--end navigation-->
+    </div>
+    <!--end sidebar wrapper -->
+    <!--start header -->
+    <header>
+        <div class="topbar d-flex align-items-center fixed-top">
+            <nav class="navbar navbar-expand">
+                <div class="mobile-toggle-menu"><i class='bx bx-menu'></i>
+                </div>
+                <div class="search-bar flex-grow-1"></div>
+                <div class="header-notifications-list"></div>
+                <div class="header-message-list"></div>
+                <div class="user-box dropdown">
+                    <a class="d-flex dropdown-toggle-nocaret down" href="#"
+                       role="button" data-bs-toggle="dropdown">
+                        <img src="${pageContext.request.contextPath}/static/images/profile/water.png" class="user-img"
+                             alt="user avatar">
+                        <div class="user-info ps-3">
+                            <p class="user-name mb-0">Частичка вселенной*</p>
+                            <label class="designattion mb-0" for="first-name"></label>
+                            <h6 id="first-name">
+                                <c:if test="${not empty FirstName}">
+                                    ${FirstName}
+                                </c:if>
+                            </h6>
+                        </div>
+                    </a>
 
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="${pageContext.request.contextPath}/userProfile"><i
+                                class="bx bx-user"></i><span>Профиль</span></a>
+                        </li>
+                        <li>
+                            <div class="dropdown-divider mb-0"></div>
+                        </li>
+                        <li><a class="dropdown-item" href="javascript:;"><i
+                                class='bx bx-log-out-circle'></i><span>Выйти</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!--end header -->
+    <section>
         <!--start page wrapper -->
-        <div class="page-wrapper">
+        <div class="page-wrapper holder">
             <div class="page-content">
-
                 <div class="ytd-rich-grid-video-renderer row row-cols-1 row-cols-md-2 row-cols-lg-4">
-
                     <div class="myRow ytd-rich-item-renderer">
                         <div class="bg-light text-center">
                             <div class="p-4 text-dark rounded">
                                 <iframe class="videoFrame" width="230" height="140" src="" frameborder="0"
-                                        allowfullscreen ></iframe>
+                                        allowfullscreen></iframe>
                             </div>
                         </div>
                     </div>
@@ -281,16 +286,17 @@
             </div>
         </div>
         <!--end switcher-->
-    </div>
-    <!-- Bootstrap JS -->
-    <script src="${pageContext.request.contextPath}/static/js/boot/bootstrap.bundle.min.js"></script>
-    <!--plugins-->
-    <script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
-    <script src="${pageContext.request.contextPath}/static/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
-    <!--JS-->
-    <script src="${pageContext.request.contextPath}/static/js/boot/app.js"></script>
-    <script src="${pageContext.request.contextPath}/static/js/randomVideoYT.js"></script>
-    <script src="${pageContext.request.contextPath}/static/js/cancel.js"></script>
+    </section>
+</div>
+<!-- Bootstrap JS -->
+<script src="${pageContext.request.contextPath}/static/js/boot/bootstrap.bundle.min.js"></script>
+<!--plugins-->
+<script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+<!--JS-->
+<script src="${pageContext.request.contextPath}/static/js/boot/app.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/randomVideoYT.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/cancel.js"></script>
 </body>
 
 </html>

@@ -1,5 +1,5 @@
 $('body').on('click', '.password-control', function(){
-    if ($('#password').attr('type') == 'password'){
+    if ($('#password').attr('type') === 'password'){
         $(this).addClass('view');
         $('#password').attr('type', 'text');
     } else {
@@ -10,7 +10,7 @@ $('body').on('click', '.password-control', function(){
 });
 
 $('body').on('click', '.password-control2', function(){
-    if ($('#passwordRep').attr('type') == 'password'){
+    if ($('#passwordRep').attr('type') === 'password'){
         $(this).addClass('view');
         $('#passwordRep').attr('type', 'text');
     } else {
