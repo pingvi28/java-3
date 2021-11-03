@@ -1,8 +1,9 @@
 package ru.kpfu.itis.group001.kashapova.servlets;
 
+import ru.kpfu.itis.group001.kashapova.java_class.confirmDB.ConfirmUserDBParam;
 import ru.kpfu.itis.group001.kashapova.java_class.confirmDB.UserTokenEmail;
 import ru.kpfu.itis.group001.kashapova.java_class.subsidiary.EmailSender;
-import ru.kpfu.itis.group001.kashapova.java_class.userDB.UserDB;
+import ru.kpfu.itis.group001.kashapova.java_class.userDB.UserDBParam;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -45,10 +46,10 @@ public class SendEmailAgainServlet extends HttpServlet {
         if(user_idCookie != -1){
             link = link + getServletContext().getContextPath() + "/login?token=" + UserTokenEmail.returnToken(user_idCookie);
             String sendTextEmail = "Hello!<br/> <br/> " +
-                    "Today is date |[" + UserTokenEmail.returnDataRegistration(user_idCookie) + " ]|, a certain user registered on the site 'Lamp corner' using your email. " +
+                    "Today is date |[" + ConfirmUserDBParam.returnDataRegistration(user_idCookie) + " ]|, a certain user registered on the site 'Lamp corner' using your email. " +
                     "<br/>If it was you, then please confirm your email address by following this link: <br/>" + link + "&confirm=true .\n ";
 
-            EmailSender.here.sendEmail(themeEmail, sendTextEmail, UserDB.returnEmail(user_idCookie));
+            EmailSender.here.sendEmail(themeEmail, sendTextEmail, UserDBParam.returnStringParam(user_idCookie,"email"));
             resp.sendRedirect(getServletContext().getContextPath() + "/send?sendEmail=true");
         }
         else {

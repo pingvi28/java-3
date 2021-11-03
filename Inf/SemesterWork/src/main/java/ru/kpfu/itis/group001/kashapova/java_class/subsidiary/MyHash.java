@@ -1,6 +1,6 @@
 package ru.kpfu.itis.group001.kashapova.java_class.subsidiary;
 
-import ru.kpfu.itis.group001.kashapova.java_class.userDB.UserDB;
+import ru.kpfu.itis.group001.kashapova.java_class.userDB.ChangerUserDB;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -31,7 +31,7 @@ public class MyHash {
             }
             return sb.toString();
         } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(UserDB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ChangerUserDB.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }

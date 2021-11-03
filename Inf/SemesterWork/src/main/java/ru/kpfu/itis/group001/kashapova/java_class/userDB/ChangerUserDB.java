@@ -1,5 +1,6 @@
 package ru.kpfu.itis.group001.kashapova.java_class.userDB;
 
+import ru.kpfu.itis.group001.kashapova.java_class.confirmDB.UserTokenEmail;
 import ru.kpfu.itis.group001.kashapova.java_class.subsidiary.MyHash;
 
 import java.sql.*;
@@ -10,7 +11,7 @@ import java.sql.*;
  * Sem 1
  */
 
-public class UserDB extends UserConnnect{
+public class ChangerUserDB extends UserConnnect{
     /**
      * проверка при входе на сайт
      * @param email
@@ -29,7 +30,7 @@ public class UserDB extends UserConnnect{
                 return rs.getInt("id");
             else return -2;
         } catch (ClassNotFoundException | SQLException e) {
-            System.out.println("(UDB#validate em/pass) " + e.getMessage() + " : " + e.getCause());
+            System.out.println("(CUDB#validate em/pass) " + e.getMessage() + " : " + e.getCause());
             return -3;
         }
     }
@@ -47,7 +48,7 @@ public class UserDB extends UserConnnect{
             if (!rs.next()) return false;
             return true;
         } catch (ClassNotFoundException | SQLException e) {
-            System.out.println("(UDB#validate em) " + e.getMessage() + " : " + e.getCause());
+            System.out.println("(CUDB#validate em) " + e.getMessage() + " : " + e.getCause());
             return false;
         } finally {
             try { connection.close(); } catch(SQLException se) {  }
@@ -74,27 +75,31 @@ public class UserDB extends UserConnnect{
             statement.setString(4, String.valueOf(MyHash.createHashPassword(password)));
             ResultSet rs = statement.executeQuery();
             rs.next();
-            userTokenEmail.createToken(rs.getInt(1),email);
+            UserTokenEmail.createToken(rs.getInt(1),email);
             return rs.getInt(1);
         } catch (ClassNotFoundException | SQLException e) {
-            System.out.println("(UDB#add) " + e.getMessage() + " : " + e.getCause());
+            System.out.println("(CUDB#add) " + e.getMessage() + " : " + e.getCause());
             return -1;
         } finally {
             try { connection.close(); } catch(SQLException se) {  }
         }
     }
 
-    public static String returnEmail(int user_id){
+    public static boolean updateProfile(int user_id,String name, String surname, String email, String password){
         try (Connection connection = DriverManager.getConnection(url, user, passwordDB);
              Statement statement = connection.createStatement()) {
             Class.forName("org.postgresql.Driver");
             ResultSet rs = statement.executeQuery("select * from " + tableWithUser + " where id=" + user_id +";");
+            if (!rs.next()) return false; //нет пользователя
 
-            if (!rs.next()) return ""; //нет пользователя
-            return rs.getString("email");
+            rs = statement.executeQuery("update " + tableWithUser +" set name =" + name + "," +
+                                                                        " set surname =" + surname + ","+
+                                                                        " set hash =" + password + " where id= " + user_id +";");
+
+            return true;
         } catch (ClassNotFoundException | SQLException e) {
-            System.out.println("(UDB#returnEmail) " + e.getMessage() + " : " + e.getCause());
-            return "";
+            System.out.println("(CUDB#updateProfile) " + e.getMessage() + " : " + e.getCause());
+            return false;
         }
     }
 }

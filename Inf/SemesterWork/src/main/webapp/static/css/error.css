@@ -1,13 +1,13 @@
 /* Intro */
 .intro {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
-  height: 100vh;
-  background: url("../images/image3.jpg") center no-repeat;
-  -webkit-background-size: cover;
-  background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    background: url("../images/image3.jpg") center no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
 }
 .intro_inner {
     max-width: 880px;
@@ -16,17 +16,15 @@
     text-align: center;
 }
 .intro_title {
-	 font-size: 30px;
-     color: #f0f0f0;
+    font-size: 27px;
+    color: #dde0e3;
 }
 .intro_titleH3 {
-    font-size: 25px;
-    color: #f2e9c2;
+    font-size: 20px;
+    color: #d4c1ab;
 }
 /* Container */
 .container {
     width: 100%;
     margin: 15px auto;
 }
-
-

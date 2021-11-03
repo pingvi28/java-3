@@ -18,12 +18,12 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/plugins/perfect-scrollbar/css/perfect-scrollbar.css" type="text/css"/>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/main/bootstrap.min.css" type="text/css"/>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/main/app.css" type="text/css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/main/icons.css" type="text/css"/>
     <!--my CSS -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/common.css" type="text/css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/main/styleYT.css" type="text/css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/main/theme.css" type="text/css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/main/app.css" type="text/css"/>
 
     <title>Lamp corner</title>
 </head>
@@ -66,21 +66,19 @@
                 <nav class="navbar navbar-expand">
                     <div class="mobile-toggle-menu"><i class='bx bx-menu'></i>
                     </div>
-                    <div class="search-bar flex-grow-1"></div>
-                    <div class="header-notifications-list"></div>
-                    <div class="header-message-list"></div>
+                    <div class="search-bar flex-grow-1"></div><div class="header-notifications-list"></div><div class="header-message-list"></div>
                     <div class="user-box dropdown">
-                        <a class="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret" href="#"
+                        <a class="d-flex dropdown-toggle-nocaret down" href="#"
                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <img src="${pageContext.request.contextPath}/static/images/profile/water.png" class="user-img" alt="user avatar">
                             <div class="user-info ps-3">
                                 <p class="user-name mb-0">Частичка вселенной*</p>
-                                <label class="designattion mb-0" for="first-name">Имя</label>
-                                <h5 id="first-name">
+                                <label class="" for="first-name"></label>
+                                <h6 id="first-name">
                                     <c:if test="${not empty FirstName}">
                                         ${FirstName}
                                     </c:if>
-                                </h5>
+                                </h6>
                             </div>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
@@ -283,16 +281,16 @@
             </div>
         </div>
         <!--end switcher-->
-        <!-- Bootstrap JS -->
-        <script src="${pageContext.request.contextPath}/static/js/boot/bootstrap.bundle.min.js"></script>
-        <!--plugins-->
-        <script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
-        <script src="${pageContext.request.contextPath}/static/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
-        <!--JS-->
-        <script src="${pageContext.request.contextPath}/static/js/boot/app.js"></script>
-        <script src="${pageContext.request.contextPath}/static/js/randomVideoYT.js"></script>
-        <script src="${pageContext.request.contextPath}/static/js/cancel.js"></script>
     </div>
+    <!-- Bootstrap JS -->
+    <script src="${pageContext.request.contextPath}/static/js/boot/bootstrap.bundle.min.js"></script>
+    <!--plugins-->
+    <script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/static/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+    <!--JS-->
+    <script src="${pageContext.request.contextPath}/static/js/boot/app.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/randomVideoYT.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/cancel.js"></script>
 </body>
 
 </html>

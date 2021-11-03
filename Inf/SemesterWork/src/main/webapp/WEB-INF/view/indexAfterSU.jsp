@@ -18,7 +18,7 @@
 </head>
 <body >
     <!-- Intro -->
-    <div class="intro" id="id02">
+    <div class="intro">
         <div class="intro_inner">
             <label for="first-title"></label>
             <h2 class="intro_title" id="first-title">

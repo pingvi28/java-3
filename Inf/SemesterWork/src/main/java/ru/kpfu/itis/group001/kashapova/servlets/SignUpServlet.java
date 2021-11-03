@@ -1,7 +1,8 @@
 package ru.kpfu.itis.group001.kashapova.servlets;
 
+import ru.kpfu.itis.group001.kashapova.java_class.confirmDB.ConfirmUserDBParam;
 import ru.kpfu.itis.group001.kashapova.java_class.subsidiary.EmailSender;
-import ru.kpfu.itis.group001.kashapova.java_class.userDB.UserDB;
+import ru.kpfu.itis.group001.kashapova.java_class.userDB.ChangerUserDB;
 import ru.kpfu.itis.group001.kashapova.java_class.confirmDB.UserTokenEmail;
 
 import javax.servlet.ServletException;
@@ -23,7 +24,7 @@ public class SignUpServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         link = req.getScheme() + "://" + req.getServerName() + ":" + req.getServerPort();
         HttpSession session = req.getSession(true);
-        UserDB dbconnection = new UserDB();
+        ChangerUserDB dbconnection = new ChangerUserDB();
 
         String name = req.getParameter("name");
         String surname = req.getParameter("surname");
@@ -51,7 +52,7 @@ public class SignUpServlet extends HttpServlet {
 
             link = link + getServletContext().getContextPath() + "/login?token=" +  UserTokenEmail.returnToken(userId);
             String sendTextEmail = "Hello!<br/> <br/> " +
-                    "Today is date |[" + UserTokenEmail.returnDataRegistration(userId) + " ]|, a certain user registered on the site 'Lamp corner' using your email. " +
+                    "Today is date |[" + ConfirmUserDBParam.returnDataRegistration(userId) + " ]|, a certain user registered on the site 'Lamp corner' using your email. " +
                     "<br/>If it was you, then please confirm your email address by following this link: <br/>" + link + "&confirm=true .\n ";
 
             EmailSender.here.sendEmail(themeEmail, sendTextEmail,email);

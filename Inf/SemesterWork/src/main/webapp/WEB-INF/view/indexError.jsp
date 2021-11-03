@@ -10,18 +10,22 @@
 <head>
     <!--favicon-->
     <link rel="icon" href="${pageContext.request.contextPath}/static/images/icons/favicon.png" type="image/png"/>
+    <!--my CSS -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/common.css" type="text/css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/error.css" type="text/css">
 
     <title>Error</title>
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/static/css/registration&login/login&reg_style.css">
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/static/css/main/error.css">
 </head>
 <body>
-<div class="intro">
-    <div class="container">
-        <div class="intro__inner">
-            <h2 class="intro__title intro_glow">Ой...<br/><br/>мы не смогли подключиться к базе данных, зайди немного позже</h2>
-        </div>
+<!-- Intro -->
+<div class="intro" id="id02">
+    <div class="intro_inner">
+        <h2 class="intro_title">Oй,ты попал в какие-то дебри<br/><br/></h2>
+        <h3 class="intro_titleH3">солнце,вернись, пожалуйста... и больше не теряйся<br/><br/><br/></h3>
+        <button class="btn" type="text"><a href="${pageContext.request.contextPath}/corner">хочу домой...</a></button>
+        <h3><br/><br/><br/><br/><br/></h3>
     </div>
 </div>
+
 </body>
 </html>

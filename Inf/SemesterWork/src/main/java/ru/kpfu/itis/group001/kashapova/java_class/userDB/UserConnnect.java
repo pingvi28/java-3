@@ -8,6 +8,12 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+ * @author Kashapova Dilyara
+ * 11-001
+ * Sem 1
+ */
+
 public class UserConnnect {
     protected static Connection connection;
     protected static Statement statement;
