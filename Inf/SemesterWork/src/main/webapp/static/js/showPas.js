@@ -19,3 +19,23 @@ $('body').on('click', '.password-control2', function(){
     }
     return false;
 });
+$('body').on('click', '.password-control3', function(){
+    if ($('#passwordCur').attr('type') === 'password'){
+        $(this).addClass('view');
+        $('#passwordCur').attr('type', 'text');
+    } else {
+        $(this).removeClass('view');
+        $('#passwordCur').attr('type', 'password');
+    }
+    return false;
+});
+$('body').on('click', '.password-control4', function(){
+    if ($('#passwordCur2').attr('type') === 'password'){
+        $(this).addClass('view');
+        $('#passwordCur2').attr('type', 'text');
+    } else {
+        $(this).removeClass('view');
+        $('#passwordCur2').attr('type', 'password');
+    }
+    return false;
+});

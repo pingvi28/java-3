@@ -1,7 +1,6 @@
 package ru.kpfu.itis.group001.kashapova.servlets;
 
 import ru.kpfu.itis.group001.kashapova.java_class.confirmDB.ConfirmUsersConnect;
-import ru.kpfu.itis.group001.kashapova.java_class.userDB.UserConnnect;
 import ru.kpfu.itis.group001.kashapova.java_class.userDB.UserDBParam;
 
 import javax.servlet.ServletException;
@@ -17,8 +16,6 @@ public class MainServlet extends HttpServlet {
     private int user_idCookie;
 
     public void init(HttpServletRequest req) {
-        ConfirmUsersConnect confirmUsersConnect= new ConfirmUsersConnect();
-
         Cookie[] cookies = req.getCookies();
         if(cookies!=null){
             for(Cookie c:cookies) {
@@ -35,7 +32,7 @@ public class MainServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         init(req);
         UserDBParam userDBParam = new UserDBParam();
-        req.setAttribute("FirstName", userDBParam.returnStringParam(user_idCookie,"name"));
+        req.setAttribute("FirstName", UserDBParam.returnStringParam(user_idCookie,"name"));
         req.getRequestDispatcher("/WEB-INF/view/indexMain.jsp").forward(req, resp);
     }
 }

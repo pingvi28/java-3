@@ -34,27 +34,6 @@
   -moz-animation:intro_glow 1s ease-in-out infinite alternate;
   animation: intro_glow 1s ease-in-out infinite alternate;
 }
-/*password */
-.password-control{
-    vertical-align: middle;
-	display: inline-block;
-	width: 20px;
-	height: 20px;
-	background: url(https://snipp.ru/demo/495/view.svg) 0 0 no-repeat;
-}
-.password-control.view {
-	background: url(https://snipp.ru/demo/495/no-view.svg) 0 0 no-repeat;
-}
-.password-control2{
-    vertical-align: middle;
-	display: inline-block;
-	width: 20px;
-	height: 20px;
-	background: url(https://snipp.ru/demo/495/view.svg) 0 0 no-repeat;
-}
-.password-control2.view {
-	background: url(https://snipp.ru/demo/495/no-view.svg) 0 0 no-repeat;
-}
 
 /* The Modal (background) */
 .modal {

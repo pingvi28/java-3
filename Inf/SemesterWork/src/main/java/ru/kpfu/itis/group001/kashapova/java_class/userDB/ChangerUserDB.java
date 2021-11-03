@@ -85,20 +85,34 @@ public class ChangerUserDB extends UserConnnect{
         }
     }
 
-    public static boolean updateProfile(int user_id,String name, String surname, String email, String password){
+    public static boolean updateProfileNS(int user_id, String changedName, String changedSurname){
         try (Connection connection = DriverManager.getConnection(url, user, passwordDB);
              Statement statement = connection.createStatement()) {
             Class.forName("org.postgresql.Driver");
             ResultSet rs = statement.executeQuery("select * from " + tableWithUser + " where id=" + user_id +";");
             if (!rs.next()) return false; //нет пользователя
 
-            rs = statement.executeQuery("update " + tableWithUser +" set name =" + name + "," +
-                                                                        " set surname =" + surname + ","+
-                                                                        " set hash =" + password + " where id= " + user_id +";");
-
+            rs = statement.executeQuery("update " + tableWithUser +" set name = " + changedName + " where id= " + user_id +";"+
+                                            "update " + tableWithUser + " set surname = " + changedSurname + " where id= " + user_id +";");
             return true;
         } catch (ClassNotFoundException | SQLException e) {
-            System.out.println("(CUDB#updateProfile) " + e.getMessage() + " : " + e.getCause());
+            System.out.println("(CUDB#updateProfileNS) " + e.getMessage() + " : " + e.getCause());
+            return false;
+        }
+    }
+
+    public static boolean updateProfilePass(int user_id, String password){
+        try (Connection connection = DriverManager.getConnection(url, user, passwordDB);
+             Statement statement = connection.createStatement()) {
+            Class.forName("org.postgresql.Driver");
+            ResultSet rs = statement.executeQuery("select * from " + tableWithUser + " where id=" + user_id +";");
+            if (!rs.next()) return false; //нет пользователя
+
+            rs = statement.executeQuery("update " + tableWithUser +" set hash =" + String.valueOf(MyHash.createHashPassword(password)) +
+                     " where id= " + user_id +";");
+            return true;
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println("(CUDB#updateProfilePass) " + e.getMessage() + " : " + e.getCause());
             return false;
         }
     }

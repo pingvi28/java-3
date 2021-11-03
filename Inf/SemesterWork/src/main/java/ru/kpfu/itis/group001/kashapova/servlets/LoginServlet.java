@@ -14,10 +14,9 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         HttpSession session = req.getSession();
         String token = req.getParameter("token");
-        // есть ли токен == перешел по почте
+        // есть ли токен == перешел по почте -> меняю параметр
         if(token != null ) {
             if (!token.equals("")){
                 System.out.print("user " + session.getAttribute("id_user"));
@@ -31,11 +30,10 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         String email = req.getParameter("email");
         String password = req.getParameter("password");
         int id = connection.validate(email, password);
-
+        //поставил ли галку запомнить меня
         if(req.getParameter("remember") != null){
             remember = true;
         }

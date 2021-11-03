@@ -31,4 +31,6 @@ public class UserConnnect {
         passwordDB = DBproperties.passwordDB;
         tableWithUser = DBproperties.tableUserLampCorner;
     }
+
+
 }
