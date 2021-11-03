@@ -12,5 +12,4 @@ function validatePassword(){
       document.getElementById("passwordRep").setCustomValidity("Пароли не совпадают");
   else
       document.getElementById("passwordRep").setCustomValidity("");
-  //empty string means no validation error
 }

@@ -255,18 +255,6 @@ input::placeholder {
 	position: relative;
 	height: 360px
 }
-.dropdown-large .notify {
-	width: 45px;
-	height: 45px;
-	line-height: 45px;
-	font-size: 22px;
-	text-align: center;
-	border-radius: 50%;
-	color: #fff;
-	background-color: rgba(255 255 255 , .15);
-	margin-right: 15px
-}
-
 .user-box .dropdown-menu i {
 	vertical-align: middle;
 	margin-right: 10px

@@ -157,7 +157,7 @@ body.bg-theme15 {
 	top: 0;
 	bottom: 0;
 	z-index: 16;
-	background: rgba(240, 230, 140, 0.15);
+	background: rgba(26, 2, 96, 0.8);
 	border-left: 0 solid #d2d2d2;
 	box-shadow: 0 .3rem .6rem rgba(0, 0, 0, .13);
 }
@@ -166,7 +166,7 @@ body.bg-theme15 {
 	height: 40px;
 	line-height: 40px;
 	font-size: 20px;
-	background: rgb(255 255 255 / 10%);
+	background: rgba(255 255 255 , .10);
 	box-shadow: 0 .3rem .6rem rgba(0, 0, 0, .13);
 	color: #fce38a;
 	text-align: center;
@@ -186,42 +186,31 @@ body.bg-theme15 {
 }
 .switcher {
 	list-style: none;
-	margin: 0;
-	padding: 0;
+    padding: 0;
 	overflow: hidden;
-	margin-left: 20px;
+    margin: 0 0 0 20px;
 }
 .switcher li {
 	float: left;
 	width: 55px;
 	height: 55px;
-	margin: 0 15px 15px 0px;
+	margin: 0 15px 15px 0;
 	border-radius: 10px;
-	border: 0px solid black;
+	border: 0 solid black;
 }
 .switcher-text{
-	color: rgb(252, 227, 138,0.9);
+	color: rgba(252, 227, 138,0.9);
 	font-size: 14px;
 	padding: 10px;
-	background: rgb(72, 61, 139, 0.5);
+	background: rgba(72, 61, 139, 0.5);
 }
 .category{
-	color: rgb(252, 227, 138,0.7);
+	color: rgba(252, 227, 138,0.7);
 	padding: 7px 10px;
 	margin-left: 15px;
 }
-.switcher-cont {
-  height: 100vh;
-  overflow: hidden;
-}
-
-.theme-icons {
-	background-color: rgb(0 0 0 / 15%);
-}
-
-
-/* Button */
-.btn {
+/* Button для сохраниения*/
+.btn{
     display: inline-block;
     vertical-align: top;
     border: 3px solid #fff;
