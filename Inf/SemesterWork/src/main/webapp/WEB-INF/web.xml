@@ -10,7 +10,7 @@
         <location>/indexError.jsp</location>
     </error-page>
     <error-page>
-        <error-code>500</error-code>
+        <error-code>505</error-code>
         <location>/indexError.jsp</location>
     </error-page>
 </web-app>

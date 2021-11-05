@@ -8,6 +8,7 @@
 <html>
 
 <head>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
     <!--favicon-->
     <link rel="icon" href="${pageContext.request.contextPath}/static/images/icons/favicon.png" type="image/png"/>
     <!--my CSS -->
@@ -22,7 +23,7 @@
 </head>
 
 <body>
-    <div class="intro">
+    <div class="intro" id="id02">
         <div class="container">
             <div class="intro__inner">
                 <h2 class="intro__title intro_glow">Еще немного...</h2>
@@ -57,7 +58,7 @@
                                 <a href="#" class="password-control2"></a>
                             </div>
                             <div class="form-group item">
-                                <button class="btn" type="submit" id="doGo">Создать аккаунт</button>
+                                <button class="btn" type="submit">Создать аккаунт</button>
                             </div>
                         </div>
                     </form>

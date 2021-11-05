@@ -10,6 +10,7 @@ if (url.searchParams.get("confirm") === "true") alert("\n\nТы зарегист
 
 if (url.searchParams.get("sendEmail") === "true") alert("\n\nЯ отправил письмо повторно UwU\n\n Проверь");
 
+if (url.searchParams.get("update") === "success") alert("\n данные обновлены");
 if (url.searchParams.get("update") === "-10") alert("\nтвой текущий пароль не такой...Перепроверь, пожалуйста");
 if (url.searchParams.get("update") === "-11") alert("\nне смогли обновить данные");
 if (url.searchParams.get("update") === "-12") alert("\nне смогли обновить твой пароль. Попробуй позже");

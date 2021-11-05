@@ -33,7 +33,7 @@ public class OpenServlet extends HttpServlet {
                 }
             }
         }else{
-            System.out.println ("Данные cookie не получены");
+            System.out.println ("Данные cookie не получены(OC)");
         }
     }
 
@@ -44,7 +44,6 @@ public class OpenServlet extends HttpServlet {
         if ( (user_idCookie > 0) & rememberCookie) {
 
             req.setAttribute("email", UserDBParam.returnStringParam(user_idCookie,"email"));
-            System.out.println("123");
             resp.sendRedirect(getServletContext().getContextPath() + "/corner");
         }
         else{

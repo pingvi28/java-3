@@ -46,14 +46,13 @@ public class UpdateNSServlet extends HttpServlet{
             }
             boolean success = ChangerUserDB.updateProfileNS(user_idCookie,name,surname);
             if(success){
-                resp.sendRedirect(getServletContext().getContextPath() + "/userProfile");
+                resp.sendRedirect(getServletContext().getContextPath() + "/userProfile?update=success");
             }
             else {
                 resp.sendRedirect(getServletContext().getContextPath() + "/userProfile?update=-11");
             }
         }
         else{
-            System.out.println("3");
             resp.sendRedirect(getServletContext().getContextPath() + "/userProfile?update=-10");
         }
     }

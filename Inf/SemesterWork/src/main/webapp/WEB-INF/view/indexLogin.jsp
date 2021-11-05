@@ -9,6 +9,7 @@
 <html>
 
 <head>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
     <!--favicon-->
     <link rel="icon" href="${pageContext.request.contextPath}/static/images/icons/favicon.png" type="image/png"/>
     <!--my CSS -->
@@ -16,6 +17,12 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/registration&login/loginANDreg.css" type="text/css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/registration&login/login.css" type="text/css"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kaushan+Script|Montserrat:400,700&display=swap&subset=cyrillic" type="text/css"/>
+    <!--Script-->
+    <script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/cancel.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/showPas.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/sendFormStop.js" defer></script>
+    <script src="${pageContext.request.contextPath}/static/js/logSiteAlert.js" async></script>
 
     <title>Lamp corner</title>
 </head>
@@ -105,12 +112,6 @@
             </div>
         </section>
     </div>
-    <!--Script-->
-    <script src="${pageContext.request.contextPath}/static/js/cancel.js"></script>
-    <script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
-    <script src="${pageContext.request.contextPath}/static/js/showPas.js"></script>
-    <script src="${pageContext.request.contextPath}/static/js/logSiteAlert.js"></script>
-    <script src="${pageContext.request.contextPath}/static/js/sendFormStop.js"></script>
 </body>
 
 </html>

@@ -1,6 +1,7 @@
 package ru.kpfu.itis.group001.kashapova.servlets;
 
 import ru.kpfu.itis.group001.kashapova.java_class.confirmDB.ConfirmUserDBParam;
+import ru.kpfu.itis.group001.kashapova.java_class.confirmDB.ConfirmUsersConnect;
 import ru.kpfu.itis.group001.kashapova.java_class.subsidiary.EmailSender;
 import ru.kpfu.itis.group001.kashapova.java_class.userDB.ChangerUserDB;
 import ru.kpfu.itis.group001.kashapova.java_class.confirmDB.UserTokenEmail;
@@ -18,33 +19,22 @@ public class SignUpServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         getServletContext().getRequestDispatcher("/WEB-INF/view/indexSignUp.jsp").forward(req, resp);
+        System.out.println("1234");
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("qwqqew");
         link = req.getScheme() + "://" + req.getServerName() + ":" + req.getServerPort();
-        HttpSession session = req.getSession(true);
         ChangerUserDB dbconnection = new ChangerUserDB();
-
+        ConfirmUsersConnect confirmUsersConnect = new ConfirmUsersConnect();
         String name = req.getParameter("name");
         String surname = req.getParameter("surname");
         String email = req.getParameter("email");
         String password = req.getParameter("password");
-        boolean remember = Boolean.parseBoolean(req.getParameter("remember"));
-
+        System.out.println(email + " "+ dbconnection.validate(email));
         if (!dbconnection.validate(email)) {
             int userId = dbconnection.add(name, surname, email, password);
-            if(session.getAttribute("id_user") == null) {
-                session.setAttribute("id_user", userId);
-                System.out.println("Session data are set");
-            }
-            else {
-                System.out.println("User id: " + userId);
-                // удаляем объект с ключом name
-                session.removeAttribute("id_user");
-                session.setAttribute("id_user", userId);
-                System.out.println("New session data are set");
-            }
 
             Cookie userIDCookie = new Cookie("user_id_cookie",  Integer.toString(userId));
             userIDCookie.setMaxAge(60*60*2);

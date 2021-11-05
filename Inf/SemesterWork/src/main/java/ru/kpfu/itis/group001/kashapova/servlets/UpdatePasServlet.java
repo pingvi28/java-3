@@ -38,14 +38,13 @@ public class UpdatePasServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         init(req);
-        String password = req.getParameter("passwordCur");
+        String password = req.getParameter("passwordCur2");
         String passwordRep = req.getParameter("passwordRep");
 
         if(MyHash.createHashPassword(password).equals(UserDBParam.returnStringParam(user_idCookie,"hash"))){
             boolean success = ChangerUserDB.updateProfilePass(user_idCookie,passwordRep);
-
             if(success){
-                resp.sendRedirect(getServletContext().getContextPath() + "/userProfile");
+                resp.sendRedirect(getServletContext().getContextPath() + "/userProfile?update=success");
             }
             else {
                 resp.sendRedirect(getServletContext().getContextPath() + "/userProfile?update=-12");

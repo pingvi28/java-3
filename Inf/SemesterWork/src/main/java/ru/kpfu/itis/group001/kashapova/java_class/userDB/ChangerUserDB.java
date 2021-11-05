@@ -50,8 +50,6 @@ public class ChangerUserDB extends UserConnnect{
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("(CUDB#validate em) " + e.getMessage() + " : " + e.getCause());
             return false;
-        } finally {
-            try { connection.close(); } catch(SQLException se) {  }
         }
     }
 
@@ -80,8 +78,6 @@ public class ChangerUserDB extends UserConnnect{
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("(CUDB#add) " + e.getMessage() + " : " + e.getCause());
             return -1;
-        } finally {
-            try { connection.close(); } catch(SQLException se) {  }
         }
     }
 
@@ -92,12 +88,13 @@ public class ChangerUserDB extends UserConnnect{
             ResultSet rs = statement.executeQuery("select * from " + tableWithUser + " where id=" + user_id +";");
             if (!rs.next()) return false; //нет пользователя
 
-            rs = statement.executeQuery("update " + tableWithUser +" set name = " + changedName + " where id= " + user_id +";"+
-                                            "update " + tableWithUser + " set surname = " + changedSurname + " where id= " + user_id +";");
+            rs = statement.executeQuery("update " + tableWithUser +" set name = \'" + changedName + "\' where id= " + user_id +";"+
+                                            "update " + tableWithUser + " set surname = \'" + changedSurname + "\' where id= " + user_id +";");
+            if (rs.next()) return true;
             return true;
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("(CUDB#updateProfileNS) " + e.getMessage() + " : " + e.getCause());
-            return false;
+            return true;
         }
     }
 
@@ -108,8 +105,10 @@ public class ChangerUserDB extends UserConnnect{
             ResultSet rs = statement.executeQuery("select * from " + tableWithUser + " where id=" + user_id +";");
             if (!rs.next()) return false; //нет пользователя
 
-            rs = statement.executeQuery("update " + tableWithUser +" set hash =" + String.valueOf(MyHash.createHashPassword(password)) +
-                     " where id= " + user_id +";");
+            ResultSet rs2 = statement.executeQuery("update " + tableWithUser +" set hash = \'" + String.valueOf(MyHash.createHashPassword(password)) +
+                     "\' where id= " + user_id +";");
+            System.out.println(rs2.next() + " 12");
+            if (rs2.next()) return true;
             return true;
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("(CUDB#updateProfilePass) " + e.getMessage() + " : " + e.getCause());

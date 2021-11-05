@@ -14,7 +14,6 @@ import java.sql.Statement;
  */
 
 public class ConfirmUsersConnect {
-    protected static Connection connection;
     protected static String url;
     protected static String user;
     protected static String passwordDB;

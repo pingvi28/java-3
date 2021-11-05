@@ -316,6 +316,7 @@
 <script src="${pageContext.request.contextPath}/static/js/showPas.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/pasSigUpCorrect.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/sendFormStop.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/logSiteAlert.js"></script>
 </body>
 
 </html>
