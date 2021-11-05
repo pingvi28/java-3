@@ -19,12 +19,10 @@ public class SignUpServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         getServletContext().getRequestDispatcher("/WEB-INF/view/indexSignUp.jsp").forward(req, resp);
-        System.out.println("1234");
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("qwqqew");
         link = req.getScheme() + "://" + req.getServerName() + ":" + req.getServerPort();
         ChangerUserDB dbconnection = new ChangerUserDB();
         ConfirmUsersConnect confirmUsersConnect = new ConfirmUsersConnect();
@@ -32,7 +30,7 @@ public class SignUpServlet extends HttpServlet {
         String surname = req.getParameter("surname");
         String email = req.getParameter("email");
         String password = req.getParameter("password");
-        System.out.println(email + " "+ dbconnection.validate(email));
+
         if (!dbconnection.validate(email)) {
             int userId = dbconnection.add(name, surname, email, password);
 

@@ -23,8 +23,6 @@ public class UserProfileServlet extends HttpServlet {
                     user_idCookie = Integer.parseInt(c.getValue());
                 }
             }
-        }else{
-            System.out.println ("Данные cookie не получены");
         }
     }
 

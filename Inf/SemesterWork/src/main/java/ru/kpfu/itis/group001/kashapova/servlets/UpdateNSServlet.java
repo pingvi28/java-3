@@ -36,7 +36,7 @@ public class UpdateNSServlet extends HttpServlet{
         String name = req.getParameter("changedName");
         String surname = req.getParameter("changedSurname");
         String password = req.getParameter("passwordCur");
-        System.out.println(name+ " " + surname + " " +password);
+
         if(MyHash.createHashPassword(password).equals(UserDBParam.returnStringParam(user_idCookie,"hash"))){
             if(name.equals("null")){
                 name = UserDBParam.returnStringParam(user_idCookie,"name");

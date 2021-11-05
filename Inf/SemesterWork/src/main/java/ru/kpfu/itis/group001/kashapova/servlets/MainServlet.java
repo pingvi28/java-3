@@ -1,6 +1,5 @@
 package ru.kpfu.itis.group001.kashapova.servlets;
 
-import ru.kpfu.itis.group001.kashapova.java_class.confirmDB.ConfirmUsersConnect;
 import ru.kpfu.itis.group001.kashapova.java_class.userDB.UserDBParam;
 
 import javax.servlet.ServletException;

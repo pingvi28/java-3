@@ -34,9 +34,16 @@
                 </c:if>
             </h4>
             <br/><br/>
-            <form id="stopSend" action="${pageContext.request.contextPath}/send" method="post">
-                <button class="btn" type="submit"> >  еще попытка </button>
-            </form>
+            <c:if test="${not empty sendAgain}">
+                <form id="stopSend" action="${pageContext.request.contextPath}/send" method="post">
+                    <button class="btn" type="submit"> >  еще попытка </button>
+                </form>
+            </c:if>
+            <c:if test="${not empty sendLogin}">
+                <form id="stopSend" action="${pageContext.request.contextPath}/sendAgai" method="post">
+                    <button class="btn" type="submit"> >  прислать </button>
+                </form>
+            </c:if>
         </div>
     </div>
     <script src="${pageContext.request.contextPath}/static/js/logSiteAlert.js"></script>

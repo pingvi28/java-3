@@ -15,3 +15,9 @@ CREATE TABLE confirm_users
     token   VARCHAR(150),
     data_registration VARCHAR(100)
 );
+
+CREATE TABLE cookie_token
+(
+    user_id           INTEGER REFERENCES user_lamp_corner (id),
+    cook_token             VARCHAR(150)
+);

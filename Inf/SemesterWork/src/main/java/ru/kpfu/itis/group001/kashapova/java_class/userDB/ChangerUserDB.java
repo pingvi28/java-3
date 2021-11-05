@@ -105,12 +105,13 @@ public class ChangerUserDB extends UserConnnect{
             ResultSet rs = statement.executeQuery("select * from " + tableWithUser + " where id=" + user_id +";");
             if (!rs.next()) return false; //нет пользователя
 
-            ResultSet rs2 = statement.executeQuery("update " + tableWithUser +" set hash = \'" + String.valueOf(MyHash.createHashPassword(password)) +
+            rs = statement.executeQuery("update " + tableWithUser +" set hash = \'" + String.valueOf(MyHash.createHashPassword(password)) +
                      "\' where id= " + user_id +";");
-            System.out.println(rs2.next() + " 12");
-            if (rs2.next()) return true;
             return true;
         } catch (ClassNotFoundException | SQLException e) {
+            if(e.getMessage().equals("No results were returned by the query.")){
+                return true;
+            }
             System.out.println("(CUDB#updateProfilePass) " + e.getMessage() + " : " + e.getCause());
             return false;
         }
