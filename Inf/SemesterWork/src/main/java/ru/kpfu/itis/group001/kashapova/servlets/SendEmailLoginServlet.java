@@ -33,7 +33,7 @@ public class SendEmailLoginServlet extends HttpServlet {
         req.setAttribute("SecondTitle", "Подтверди свою почту. Нажми на кнопку ниже / глянь спам<br/>перейди по ссылке, указаной в письме :з <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>");
         req.setAttribute("sendLogin", "yes");
         req.removeAttribute("sendAgain");
-        getServletContext().getRequestDispatcher("/WEB-INF/view/indexAfterSU.jsp").forward(req, resp);
+        getServletContext().getRequestDispatcher("/WEB-INF/view/indexSendEmailConfirm.jsp").forward(req, resp);
     }
 
     @Override
@@ -42,13 +42,14 @@ public class SendEmailLoginServlet extends HttpServlet {
         init(req);
         String link = req.getScheme() + "://" + req.getServerName() + ":" + req.getServerPort();
         if(user_idCookie != -1){
+            System.out.println();
             link = link + getServletContext().getContextPath() + "/login?token=" + userTokenEmail.returnToken(user_idCookie);
             String sendTextEmail = "Hello!<br/> <br/> " +
                     "|[" + ConfirmUserDBParam.returnDataRegistration(user_idCookie) + " ]|, a certain user registered on the site 'Lamp corner' using your email. " +
                     "<br/>If it was you, then please confirm your email address by following this link: <br/>" + link + "&confirm=true .\n ";
 
             EmailSender.here.sendEmail(themeEmail, sendTextEmail, UserDBParam.returnStringParam(user_idCookie,"email"));
-            resp.sendRedirect(getServletContext().getContextPath() + "/send?sendEmail=true");
+            resp.sendRedirect(getServletContext().getContextPath() + "/sendAgain?sendEmail=true");
         }
         else {
             resp.sendRedirect(getServletContext().getContextPath() + "/signUp?return=-20");

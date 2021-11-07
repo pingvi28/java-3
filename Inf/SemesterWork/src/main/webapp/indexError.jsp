@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
     <!--favicon-->
     <link rel="icon" href="${pageContext.request.contextPath}/static/images/icons/favicon.png" type="image/png"/>
     <!--my CSS -->
@@ -26,6 +27,6 @@
             <h3><br/><br/><br/><br/><br/></h3>
         </div>
     </div>
-
 </body>
+
 </html>

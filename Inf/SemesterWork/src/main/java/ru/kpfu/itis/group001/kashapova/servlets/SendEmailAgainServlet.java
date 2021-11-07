@@ -33,7 +33,7 @@ public class SendEmailAgainServlet extends HttpServlet {
         req.setAttribute("SecondTitle", "если оно не пришло, нажми на кнопку ниже / глянь спам<br/>перейди по ссылке, указаной в письме :з <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>");
         req.setAttribute("sendAgain", "yes");
         req.removeAttribute("sendLogin");
-        getServletContext().getRequestDispatcher("/WEB-INF/view/indexAfterSU.jsp").forward(req, resp);
+        getServletContext().getRequestDispatcher("/WEB-INF/view/indexSendEmailConfirm.jsp").forward(req, resp);
     }
 
     @Override

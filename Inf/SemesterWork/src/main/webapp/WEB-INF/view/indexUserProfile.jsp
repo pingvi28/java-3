@@ -10,7 +10,7 @@
 <html>
 
 <head>
-    <jsp:include page="include/styleMain.jsp" />
+    <jsp:include page="include/styleMain.jsp"/>
 
     <title>Lamp corner</title>
 </head>
@@ -18,8 +18,8 @@
 <body class="bg-theme bg-theme15">
 <!--wrapper-->
 <div class="wrapper toggled">
-    <jsp:include page="include/sideBarWrapper.jsp" />
-    <jsp:include page="include/header.jsp" />
+    <jsp:include page="include/sideBarWrapper.jsp"/>
+    <jsp:include page="include/header.jsp"/>
     <!--start page wrapper -->
     <div class="page-wrapper">
         <div class="page-content">
@@ -67,7 +67,8 @@
                         <div class="col-lg-8">
                             <div class="card">
                                 <div class="card-body">
-                                    <form action="${pageContext.request.contextPath}/updateNS" id="stopSend" method="post">
+                                    <form action="${pageContext.request.contextPath}/updateNS" id="stopSend"
+                                          method="post">
                                         <div class="row mb-3">
                                             <div class="upd col-sm-3">
                                                 <h6 class="mb-0">Фамилия</h6>
@@ -96,7 +97,8 @@
                                             </div>
                                             <div class="col-sm-9">
                                                 <label>
-                                                    <input type="password" name="passwordCur" id="passwordCur" class="form-control item"
+                                                    <input type="password" name="passwordCur" id="passwordCur"
+                                                           class="form-control item"
                                                            minlength="6" placeholder="текущий пароль" required/>
                                                 </label>
                                                 <a href="#" class="password-control3"></a>
@@ -120,17 +122,18 @@
 
                             </div>
                         </div>
-                        <div class="col-lg-8" >
+                        <div class="col-lg-8">
                             <div class="card">
-                                <div class="card-body" id = "2form">
-                                    <form action="${pageContext.request.contextPath}/updatePas"  method="post">
+                                <div class="card-body" id="2form">
+                                    <form action="${pageContext.request.contextPath}/updatePas" method="post">
                                         <div class="row mb-3">
                                             <div class="upd col-sm-3">
                                                 <h6 class="mb-0">Текущий пароль</h6>
                                             </div>
                                             <div class="col-sm-9">
                                                 <label>
-                                                    <input type="password" name="passwordCur2" id="passwordCur2" class="form-control item"
+                                                    <input type="password" name="passwordCur2" id="passwordCur2"
+                                                           class="form-control item"
                                                            minlength="6" placeholder="текущий пароль" required/>
                                                 </label>
                                                 <a href="#" class="password-control4"></a>
@@ -142,7 +145,8 @@
                                             </div>
                                             <div class="col-sm-9">
                                                 <label>
-                                                    <input type="password" name="password" id="password" class="form-control item"
+                                                    <input type="password" name="password" id="password"
+                                                           class="form-control item"
                                                            minlength="6" placeholder="новый пароль" required/>
                                                 </label>
                                                 <a href="#" class="password-control"></a>
@@ -154,7 +158,8 @@
                                             </div>
                                             <div class="col-sm-9">
                                                 <label>
-                                                    <input type="password" name="passwordRep" id="passwordRep" class="form-control item"
+                                                    <input type="password" name="passwordRep" id="passwordRep"
+                                                           class="form-control item"
                                                            minlength="6" placeholder="новый пароль" required/>
                                                 </label>
                                                 <a href="#" class="password-control2"></a>
@@ -178,19 +183,19 @@
         </div>
     </div>
     <!--end page wrapper -->
-    <jsp:include page="include/switcher.jsp" />
-</div>
-<!-- Bootstrap JS -->
-<script src="${pageContext.request.contextPath}/static/js/boot/bootstrap.bundle.min.js"></script>
-<!--plugins-->
-<script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
-<script src="${pageContext.request.contextPath}/static/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
-<!--app JS-->
-<script src="${pageContext.request.contextPath}/static/js/boot/app.js"></script>
-<script src="${pageContext.request.contextPath}/static/js/showPas.js"></script>
-<script src="${pageContext.request.contextPath}/static/js/pasSigUpCorrect.js"></script>
-<script src="${pageContext.request.contextPath}/static/js/sendFormStop.js"></script>
-<script src="${pageContext.request.contextPath}/static/js/logSiteAlert.js"></script>
+    <jsp:include page="include/switcher.jsp"/>
+    </div>
+    <!-- Bootstrap JS -->
+    <script src="${pageContext.request.contextPath}/static/js/boot/bootstrap.bundle.min.js"></script>
+    <!--plugins-->
+    <script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/static/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+    <!--JS-->
+    <script src="${pageContext.request.contextPath}/static/js/boot/app.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/showPas.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/pasSigUpCorrect.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/sendFormStop.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/logSiteAlert.js"></script>
 </body>
 
 </html>

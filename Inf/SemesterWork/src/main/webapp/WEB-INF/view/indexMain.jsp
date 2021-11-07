@@ -51,16 +51,16 @@
         </div>
         <jsp:include page="include/switcher.jsp" />
     </section>
-</div>
-<!-- Bootstrap JS -->
-<script src="${pageContext.request.contextPath}/static/js/boot/bootstrap.bundle.min.js"></script>
-<!--plugins-->
-<script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
-<script src="${pageContext.request.contextPath}/static/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
-<!--JS-->
-<script src="${pageContext.request.contextPath}/static/js/boot/app.js"></script>
-<script src="${pageContext.request.contextPath}/static/js/randomVideoYT.js"></script>
-<script src="${pageContext.request.contextPath}/static/js/cancel.js"></script>
+    </div>
+    <!-- Bootstrap JS -->
+    <script src="${pageContext.request.contextPath}/static/js/boot/bootstrap.bundle.min.js"></script>
+    <!--plugins-->
+    <script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/static/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+    <!--JS-->
+    <script src="${pageContext.request.contextPath}/static/js/boot/app.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/randomVideoYT.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/cancel.js"></script>
 </body>
 
 </html>

@@ -64,8 +64,9 @@ public class LoginServlet extends HttpServlet {
                     resp.addCookie(rememberCookie);
                 }
                 resp.sendRedirect(getServletContext().getContextPath() + "/corner");
+            }else{
+                resp.sendRedirect(getServletContext().getContextPath() + "/sendAgain");
             }
-            resp.sendRedirect(getServletContext().getContextPath() + "/sendAgain");
         } else {
             if(id == -1) {
                 resp.sendRedirect(getServletContext().getContextPath() + "/login?return=-11");

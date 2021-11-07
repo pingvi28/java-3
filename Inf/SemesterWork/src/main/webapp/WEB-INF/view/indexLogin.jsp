@@ -14,9 +14,13 @@
     <link rel="icon" href="${pageContext.request.contextPath}/static/images/icons/favicon.png" type="image/png"/>
     <!--my CSS -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/common.css" type="text/css"/>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/registration&login/loginANDreg.css" type="text/css"/>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/registration&login/login.css" type="text/css"/>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kaushan+Script|Montserrat:400,700&display=swap&subset=cyrillic" type="text/css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/registration&login/loginANDreg.css"
+          type="text/css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/registration&login/login.css"
+          type="text/css"/>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Kaushan+Script|Montserrat:400,700&display=swap&subset=cyrillic"
+          type="text/css"/>
     <!--Script-->
     <script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/static/js/cancel.js"></script>
@@ -38,15 +42,19 @@
                     </button>
                     <!-- The Modal -->
                     <div id="id01" class="modal">
-                        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                        <span onclick="document.getElementById('id01').style.display='none'" class="close"
+                              title="Close Modal">&times;</span>
                         <!-- Modal Content -->
-                        <form class="modal-content animate" id="stopSend" action="${pageContext.request.contextPath}/login" method="post">
+                        <form class="modal-content animate" id="stopSend" action="${pageContext.request.contextPath}/login"
+                              method="post">
                             <div class="container">
                                 <div class="form-group">
-                                    <input class="form-control item" type="email" name="email" id="email" placeholder="Email" required>
+                                    <input class="form-control item" type="email" name="email" id="email"
+                                           placeholder="Email" required>
                                 </div>
                                 <div class="form-group pas">
-                                    <input class="form-control item" type="password" name="password" minlength="6" id="password" placeholder="Пароль" required>
+                                    <input class="form-control item" type="password" name="password" minlength="6"
+                                           id="password" placeholder="Пароль" required>
 
                                     <a href="#" class="password-control"></a>
                                 </div>
@@ -58,10 +66,11 @@
                                 </div>
                                 <span class="create_ac"></span>
                                 <span class="create_ac ctr">Войти через:&emsp;
-                                    <a href="https://oauth.vk.com/authorize?client_id=7984087&display=page&redirect_uri=http://localhost:8084/lamp/vk_auth&scope=email&response_type=code&v=5.131">
-                                        <img class="img vk" src="${pageContext.request.contextPath}/static/images/icons/vk.png">
-                                    </a>
-                                </span>
+                                        <a href="https://oauth.vk.com/authorize?client_id=7984087&display=page&redirect_uri=http://localhost:8084/lamp/vk_auth&scope=email&response_type=code&v=5.131">
+                                            <img class="img vk"
+                                                 src="${pageContext.request.contextPath}/static/images/icons/vk.png">
+                                        </a>
+                                    </span>
                             </div>
                             <div class="container">
                                 <span class="create_ac">Еще не  <a href="${pageContext.request.contextPath}/signUp">зарегистрировались?</a></span>
