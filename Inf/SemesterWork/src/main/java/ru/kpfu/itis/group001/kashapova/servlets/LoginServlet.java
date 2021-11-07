@@ -32,7 +32,6 @@ public class LoginServlet extends HttpServlet {
         init(req);
         String token = req.getParameter("token");
         // есть ли токен == перешел по почте -> меняю параметр
-        System.out.println("do" + user_idCookie);
         if(token != null && !token.equals("")) {
             if(user_idCookie > 0){
                 System.out.println("do" + user_idCookie);
@@ -56,6 +55,7 @@ public class LoginServlet extends HttpServlet {
 
         if (id > 0) {
             Cookie userCookie = new Cookie("user_id_cookie",  Integer.toString(id));
+            userCookie.setMaxAge(60*60*24*5);
             resp.addCookie(userCookie);
             if(flag){
                 if (remember) {

@@ -32,8 +32,6 @@ public class OpenServlet extends HttpServlet {
                         break;
                 }
             }
-        }else{
-            System.out.println ("Данные cookie не получены(OC)");
         }
     }
 

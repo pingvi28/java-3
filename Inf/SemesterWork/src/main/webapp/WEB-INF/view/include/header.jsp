@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!--start header -->
 <header>
     <div class="topbar d-flex align-items-center">
@@ -37,7 +38,7 @@
                     <li>
                         <div class="dropdown-divider mb-0"></div>
                     </li>
-                    <li><a class="dropdown-item" href="javascript:"><i
+                    <li><a class="dropdown-item" href="${pageContext.request.contextPath}/logout"><i
                             class='bx bx-log-out-circle'></i><span>Выйти</span></a>
                     </li>
                 </ul>
