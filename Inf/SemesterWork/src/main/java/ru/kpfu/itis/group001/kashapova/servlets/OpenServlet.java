@@ -1,5 +1,8 @@
 package ru.kpfu.itis.group001.kashapova.servlets;
 
+import ru.kpfu.itis.group001.kashapova.services.cookieTokenDB.ChangerCookieTokenService;
+import ru.kpfu.itis.group001.kashapova.services.cookieTokenDB.CookieTokenDB;
+import ru.kpfu.itis.group001.kashapova.services.userDB.UserConnnect;
 import ru.kpfu.itis.group001.kashapova.services.userDB.UserDBParam;
 
 import javax.servlet.ServletException;
@@ -12,7 +15,7 @@ import java.io.IOException;
 
 @WebServlet("/openCorner")
 public class OpenServlet extends HttpServlet {
-    private int user_idCookie;
+    private String user_idCookie = "";
     private boolean rememberCookie = false;
 
     public void init(HttpServletRequest req) {
@@ -22,7 +25,7 @@ public class OpenServlet extends HttpServlet {
             for(Cookie c:cookies) {
                 switch (c.getName()) {
                     case ("user_id_cookie"):
-                        user_idCookie = Integer.parseInt(c.getValue());
+                        user_idCookie = c.getValue();
                         break;
                     case ("remember_cookie"):
                         rememberCookie = Boolean.parseBoolean(c.getValue());
@@ -35,13 +38,15 @@ public class OpenServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         init(req);
-
-        if ( (user_idCookie > 0) & rememberCookie) {
-
-            req.setAttribute("email", UserDBParam.returnStringParam(user_idCookie,"email"));
-            resp.sendRedirect(getServletContext().getContextPath() + "/corner");
+        ChangerCookieTokenService cookieTokenDB = new ChangerCookieTokenService();
+        if ( (user_idCookie != null) & rememberCookie) {
+            if(cookieTokenDB.returnUserID(user_idCookie) > 0){
+                System.gc();
+                resp.sendRedirect(getServletContext().getContextPath() + "/corner");
+            }
         }
         else{
+            System.gc();
             resp.sendRedirect(getServletContext().getContextPath() + "/login");
         }
     }

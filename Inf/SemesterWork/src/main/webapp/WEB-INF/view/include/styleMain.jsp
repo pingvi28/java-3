@@ -14,10 +14,9 @@
 <link rel="stylesheet"
       href="${pageContext.request.contextPath}/static/plugins/perfect-scrollbar/css/perfect-scrollbar.css"
       type="text/css"/>
-<!-- Bootstrap CSS -->
+<!-- CSS -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/main/bootstrap.min.css" type="text/css"/>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/main/icons.css" type="text/css"/>
-<!--my CSS -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/common.css" type="text/css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/main/icons.css" type="text/css"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/main/theme.css" type="text/css"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/main/app.css" type="text/css"/>

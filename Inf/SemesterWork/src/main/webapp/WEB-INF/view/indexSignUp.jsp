@@ -18,7 +18,13 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kaushan+Script|Montserrat:400,700&display=swap&subset=cyrillic" type="text/css" >
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css" type="text/css"/>
-
+    <!--Script-->
+    <script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/cancel.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/pasSigUpCorrect.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/showPas.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/logSiteAlert.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/sendFormStop.js"></script>
     <title>Lamp corner</title>
 </head>
 
@@ -69,13 +75,6 @@
             </div>
         </div>
     </div>
-    <!--Script-->
-    <script src="${pageContext.request.contextPath}/static/js/cancel.js"></script>
-    <script src="${pageContext.request.contextPath}/static/js/pasSigUpCorrect.js"></script>
-    <script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
-    <script src="${pageContext.request.contextPath}/static/js/showPas.js"></script>
-    <script src="${pageContext.request.contextPath}/static/js/logSiteAlert.js"></script>
-    <script src="${pageContext.request.contextPath}/static/js/sendFormStop.js"></script>
 </body>
 
 </html>

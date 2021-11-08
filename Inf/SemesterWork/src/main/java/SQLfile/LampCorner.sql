@@ -1,6 +1,7 @@
 CREATE TABLE user_lamp_corner
 (
     id            BIGSERIAL PRIMARY KEY,
+    cook_token             VARCHAR(150),
     name       VARCHAR(30),
     surname    VARCHAR(50),
     email      VARCHAR(100),

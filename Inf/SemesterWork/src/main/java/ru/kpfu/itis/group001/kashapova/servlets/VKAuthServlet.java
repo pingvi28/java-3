@@ -1,12 +1,19 @@
 //https://vk.com/dev.php?method=authcode_flow_user
 package ru.kpfu.itis.group001.kashapova.servlets;
 
+import ru.kpfu.itis.group001.kashapova.java_class.EmailSender;
 import ru.kpfu.itis.group001.kashapova.java_class.VK.VKAccessToken;
 import ru.kpfu.itis.group001.kashapova.java_class.VK.VKOauthUser;
 import com.google.gson.Gson;
+import ru.kpfu.itis.group001.kashapova.services.confirmDB.ConfirmUserDBParam;
+import ru.kpfu.itis.group001.kashapova.services.confirmDB.UserTokenEmailServices;
+import ru.kpfu.itis.group001.kashapova.services.cookieTokenDB.ChangerCookieTokenService;
+import ru.kpfu.itis.group001.kashapova.services.userDB.ChangeEmailConfirmedServices;
+import ru.kpfu.itis.group001.kashapova.services.userDB.ChangerUserDBService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,8 +29,8 @@ public class VKAuthServlet extends HttpServlet {
     final String clientId = "7984087";
     final String clientSecret = "VKa2DApqDI4iQgH30KcW";
     private final Gson gson = new Gson();
-    private VKAccessToken accessToken;
-    private VKOauthUser vkOauthUser;
+    protected static VKAccessToken accessToken = new VKAccessToken();
+    protected static VKOauthUser vkOauthUser = new VKOauthUser();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -43,7 +50,24 @@ public class VKAuthServlet extends HttpServlet {
             resp.sendRedirect(getServletContext().getContextPath() + "/login?vkAuth=1");
         }
 
-        resp.sendRedirect(getServletContext().getContextPath() + "/corner");
+        req.getRequestDispatcher("/WEB-INF/view/indexCreatePasswordVK.jsp").forward(req, resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        ChangerUserDBService dbconnection = new ChangerUserDBService();
+        String password = req.getParameter("password");
+        if (password != null) {
+            String userIdCookie = dbconnection.add(vkOauthUser.first_name, vkOauthUser.last_name, vkOauthUser.email, password);
+            ChangeEmailConfirmedServices.changeEmailConfirmed(ChangerCookieTokenService.returnUserID(userIdCookie));
+            Cookie userIDCookie = new Cookie("user_id_cookie",  userIdCookie);
+            userIDCookie.setMaxAge(60*60*2);
+            resp.addCookie(userIDCookie);
+
+            resp.sendRedirect(getServletContext().getContextPath() + "/corner");
+        } else {
+            resp.sendRedirect(getServletContext().getContextPath() + "/vk_auth");
+        }
     }
 
     /**
@@ -87,10 +111,5 @@ public class VKAuthServlet extends HttpServlet {
         String encoding = con.getContentEncoding();
         encoding = encoding == null ? "UTF-8" : encoding;
         return new BufferedReader(new InputStreamReader(in, encoding)).readLine();
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("Here");
     }
 }

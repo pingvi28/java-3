@@ -210,25 +210,3 @@ body.bg-theme15 {
 	padding: 7px 10px;
 	margin-left: 15px;
 }
-/* Button для сохраниения*/
-.btn{
-    display: inline-block;
-    vertical-align: top;
-    border: 3px solid #fff;
-    padding: 8px 30px;
-    color: #fff ;
-    font-size: 14px;
-    font-weight: 700;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: backgroud .2s linear, color .2s linear ;
-    background-color: Transparent;
-    background-repeat:no-repeat;
-    cursor:pointer;
-    overflow: hidden;
-}
-.btn:hover {
-    background-color: #fce38a;
-    color: #333;
-    border: 3px solid #fce38a;
-}

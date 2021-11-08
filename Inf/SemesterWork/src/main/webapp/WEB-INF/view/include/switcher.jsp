@@ -8,8 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!--start switcher-->
 <div class="switcher-wrapper" id="id01">
-    <div class="switcher-btn"><i class='bx bx-cog bx-spin'></i>
-    </div>
+    <div class="switcher-btn"><i class="bx bx-cog bx-spin"></i></div>
     <div class="switcher-body">
         <div class="d-flex align-items-center">
             <h5 class="switcher-text text-uppercase">Настрой сайт под себя</h5>

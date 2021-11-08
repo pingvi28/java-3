@@ -1,7 +1,8 @@
 package ru.kpfu.itis.group001.kashapova.servlets;
 
 import ru.kpfu.itis.group001.kashapova.java_class.MyHash;
-import ru.kpfu.itis.group001.kashapova.services.userDB.ChangerUserDBServices;
+import ru.kpfu.itis.group001.kashapova.services.cookieTokenDB.ChangerCookieTokenService;
+import ru.kpfu.itis.group001.kashapova.services.userDB.ChangerUserDBService;
 import ru.kpfu.itis.group001.kashapova.services.userDB.UserDBParam;
 
 import javax.servlet.ServletException;
@@ -14,7 +15,7 @@ import java.io.IOException;
 
 @WebServlet("/updateNS")
 public class UpdateNSServlet extends HttpServlet{
-    private int user_idCookie;
+    private String user_idCookie = "";
 
     public void init(HttpServletRequest req) {
         UserDBParam userDBParam = new UserDBParam();
@@ -22,7 +23,7 @@ public class UpdateNSServlet extends HttpServlet{
         if(cookies!=null){
             for(Cookie c:cookies) {
                 if ("user_id_cookie".equals(c.getName())) {
-                    user_idCookie = Integer.parseInt(c.getValue());
+                    user_idCookie = c.getValue();
                 }
             }
         }else{
@@ -37,14 +38,15 @@ public class UpdateNSServlet extends HttpServlet{
         String surname = req.getParameter("changedSurname");
         String password = req.getParameter("passwordCur");
 
-        if(MyHash.createHashPassword(password).equals(UserDBParam.returnStringParam(user_idCookie,"hash"))){
+        int userID = ChangerCookieTokenService.returnUserID(user_idCookie);
+        if(MyHash.createHashPassword(password).equals(UserDBParam.returnStringParam(userID,"hash"))){
             if(name.equals("null")){
-                name = UserDBParam.returnStringParam(user_idCookie,"name");
+                name = UserDBParam.returnStringParam(userID,"name");
             }
             if(surname.equals("null")){
-                name = UserDBParam.returnStringParam(user_idCookie,"surname");
+                name = UserDBParam.returnStringParam(userID,"surname");
             }
-            boolean success = ChangerUserDBServices.updateProfileNS(user_idCookie,name,surname);
+            boolean success = ChangerUserDBService.updateProfileNS(userID,name,surname);
             if(success){
                 resp.sendRedirect(getServletContext().getContextPath() + "/userProfile?update=success");
             }

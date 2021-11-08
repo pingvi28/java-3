@@ -1,7 +1,8 @@
 package ru.kpfu.itis.group001.kashapova.servlets;
 
 import ru.kpfu.itis.group001.kashapova.java_class.MyHash;
-import ru.kpfu.itis.group001.kashapova.services.userDB.ChangerUserDBServices;
+import ru.kpfu.itis.group001.kashapova.services.cookieTokenDB.ChangerCookieTokenService;
+import ru.kpfu.itis.group001.kashapova.services.userDB.ChangerUserDBService;
 import ru.kpfu.itis.group001.kashapova.services.userDB.UserDBParam;
 
 import javax.servlet.ServletException;
@@ -14,7 +15,7 @@ import java.io.IOException;
 
 @WebServlet("/updatePas")
 public class UpdatePasServlet extends HttpServlet {
-    private int user_idCookie;
+    private String user_idCookie = "";
 
     public void init(HttpServletRequest req) {
         UserDBParam userDBParam = new UserDBParam();
@@ -22,11 +23,9 @@ public class UpdatePasServlet extends HttpServlet {
         if(cookies!=null){
             for(Cookie c:cookies) {
                 if ("user_id_cookie".equals(c.getName())) {
-                    user_idCookie = Integer.parseInt(c.getValue());
+                    user_idCookie = c.getValue();
                 }
             }
-        }else{
-            System.out.println ("Данные cookie не получены");
         }
     }
 
@@ -40,8 +39,10 @@ public class UpdatePasServlet extends HttpServlet {
         init(req);
         String password = req.getParameter("passwordCur2");
         String passwordNew = req.getParameter("passwordRep");
-        if(MyHash.createHashPassword(password).equals(UserDBParam.returnStringParam(user_idCookie,"hash"))){
-            boolean success = ChangerUserDBServices.updateProfilePass(user_idCookie,passwordNew);
+
+        int userID = ChangerCookieTokenService.returnUserID(user_idCookie);
+        if(MyHash.createHashPassword(password).equals(UserDBParam.returnStringParam(userID,"hash"))){
+            boolean success = ChangerUserDBService.updateProfilePass(userID,passwordNew);
             if(success){
                 resp.sendRedirect(getServletContext().getContextPath() + "/userProfile?update=success");
             }

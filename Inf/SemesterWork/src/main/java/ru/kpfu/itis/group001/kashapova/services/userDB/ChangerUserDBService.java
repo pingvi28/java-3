@@ -2,6 +2,7 @@ package ru.kpfu.itis.group001.kashapova.services.userDB;
 
 import ru.kpfu.itis.group001.kashapova.services.confirmDB.UserTokenEmailServices;
 import ru.kpfu.itis.group001.kashapova.java_class.MyHash;
+import ru.kpfu.itis.group001.kashapova.services.cookieTokenDB.ChangerCookieTokenService;
 
 import java.sql.*;
 
@@ -11,7 +12,7 @@ import java.sql.*;
  * Sem 1
  */
 
-public class ChangerUserDBServices extends UserConnnect{
+public class ChangerUserDBService extends UserConnnect{
     /**
      * проверка при входе на сайт
      * @param email
@@ -61,7 +62,7 @@ public class ChangerUserDBServices extends UserConnnect{
      * @param password
      * @return
      */
-    public int add(String name, String surname, String email, String password) {
+    public String add(String name, String surname, String email, String password) {
         try (Connection connection = DriverManager.getConnection(url, user, passwordDB);
              PreparedStatement statement = connection.prepareStatement(
                      "insert into " + tableWithUser + " (name ,surname, email, hash) values (? ,? ,?, ?) returning id;")) {
@@ -74,10 +75,10 @@ public class ChangerUserDBServices extends UserConnnect{
             ResultSet rs = statement.executeQuery();
             rs.next();
             UserTokenEmailServices.createToken(rs.getInt(1),email);
-            return rs.getInt(1);
+            return ChangerCookieTokenService.add(rs.getInt(1));
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("(CUDB#add) " + e.getMessage() + " : " + e.getCause());
-            return -1;
+            return "";
         }
     }
 

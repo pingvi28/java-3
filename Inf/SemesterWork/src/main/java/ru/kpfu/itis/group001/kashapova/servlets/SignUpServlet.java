@@ -3,7 +3,8 @@ package ru.kpfu.itis.group001.kashapova.servlets;
 import ru.kpfu.itis.group001.kashapova.services.confirmDB.ConfirmUserDBParam;
 import ru.kpfu.itis.group001.kashapova.services.confirmDB.ConfirmUsersConnect;
 import ru.kpfu.itis.group001.kashapova.java_class.EmailSender;
-import ru.kpfu.itis.group001.kashapova.services.userDB.ChangerUserDBServices;
+import ru.kpfu.itis.group001.kashapova.services.cookieTokenDB.ChangerCookieTokenService;
+import ru.kpfu.itis.group001.kashapova.services.userDB.ChangerUserDBService;
 import ru.kpfu.itis.group001.kashapova.services.confirmDB.UserTokenEmailServices;
 
 import javax.servlet.ServletException;
@@ -24,24 +25,26 @@ public class SignUpServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         link = req.getScheme() + "://" + req.getServerName() + ":" + req.getServerPort();
-        ChangerUserDBServices dbconnection = new ChangerUserDBServices();
-        ConfirmUsersConnect confirmUsersConnect = new ConfirmUsersConnect();
+        ChangerUserDBService dbconnection = new ChangerUserDBService();
         String name = req.getParameter("name");
         String surname = req.getParameter("surname");
         String email = req.getParameter("email");
         String password = req.getParameter("password");
 
         if (!dbconnection.validate(email)) {
-            int userId = dbconnection.add(name, surname, email, password);
+            String userIdCookie = dbconnection.add(name, surname, email, password);
 
-            Cookie userIDCookie = new Cookie("user_id_cookie",  Integer.toString(userId));
+            Cookie userIDCookie = new Cookie("user_id_cookie",  userIdCookie);
             userIDCookie.setMaxAge(60*60*2);
             resp.addCookie(userIDCookie);
 
-            link = link + getServletContext().getContextPath() + "/login?token=" +  UserTokenEmailServices.returnToken(userId);
+            link = link + getServletContext().getContextPath() + "/login?token=" +  UserTokenEmailServices.returnToken(ChangerCookieTokenService.returnUserID(userIdCookie));
+
             String sendTextEmail = "Hello!<br/> <br/> " +
-                    "Today is date |[" + ConfirmUserDBParam.returnDataRegistration(userId) + " ]|, a certain user registered on the site 'Lamp corner' using your email. " +
-                    "<br/>If it was you, then please confirm your email address by following this link: <br/>" + link + "&confirm=true .\n ";
+                    "Today is date |[" + ConfirmUserDBParam.returnDataRegistration(ChangerCookieTokenService.returnUserID(userIdCookie)) +
+                    " ]|, a certain user registered on the site 'Lamp corner' using your email. " +
+                    "<br/>If it was you, then please confirm your email address by following this link: <br/>"
+                    + link + "&confirm=true .\n ";
 
             EmailSender.here.sendEmail(themeEmail, sendTextEmail,email);
 

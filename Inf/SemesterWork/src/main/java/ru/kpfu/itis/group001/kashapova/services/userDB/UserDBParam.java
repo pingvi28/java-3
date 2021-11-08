@@ -16,6 +16,7 @@ public class UserDBParam extends UserConnnect{
             return "";
         }
     }
+
     public static boolean returnConfirmFlag(int user_id){
         try (Connection connection = DriverManager.getConnection(url, user, passwordDB);
              Statement statement = connection.createStatement()) {

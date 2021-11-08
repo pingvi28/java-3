@@ -3,6 +3,7 @@ package ru.kpfu.itis.group001.kashapova.servlets;
 import ru.kpfu.itis.group001.kashapova.services.confirmDB.ConfirmUserDBParam;
 import ru.kpfu.itis.group001.kashapova.services.confirmDB.UserTokenEmailServices;
 import ru.kpfu.itis.group001.kashapova.java_class.EmailSender;
+import ru.kpfu.itis.group001.kashapova.services.cookieTokenDB.ChangerCookieTokenService;
 import ru.kpfu.itis.group001.kashapova.services.userDB.UserDBParam;
 
 import javax.servlet.ServletException;
@@ -13,14 +14,14 @@ import java.io.IOException;
 @WebServlet("/sendAgain")
 public class SendEmailLoginServlet extends HttpServlet {
     private final String themeEmail = "Подтвердите свою почту (повторное письмо)";
-    private int user_idCookie = -1;
+    private String user_idCookie = "";
 
     public void init(HttpServletRequest req) {
         Cookie[] cookies = req.getCookies();
         if(cookies!=null){
             for(Cookie c:cookies) {
                 if ("user_id_cookie".equals(c.getName())) {
-                    user_idCookie = Integer.parseInt(c.getValue());
+                    user_idCookie = c.getValue();
                 }
             }
         }
@@ -40,14 +41,15 @@ public class SendEmailLoginServlet extends HttpServlet {
         UserTokenEmailServices userTokenEmailServices = new UserTokenEmailServices();
         init(req);
         String link = req.getScheme() + "://" + req.getServerName() + ":" + req.getServerPort();
-        if(user_idCookie != -1){
+        int userID = ChangerCookieTokenService.returnUserID(user_idCookie);
+        if(userID != -1){
             System.out.println();
-            link = link + getServletContext().getContextPath() + "/login?token=" + userTokenEmailServices.returnToken(user_idCookie);
+            link = link + getServletContext().getContextPath() + "/login?token=" + userTokenEmailServices.returnToken(userID);
             String sendTextEmail = "Hello!<br/> <br/> " +
-                    "|[" + ConfirmUserDBParam.returnDataRegistration(user_idCookie) + " ]|, a certain user registered on the site 'Lamp corner' using your email. " +
+                    "|[" + ConfirmUserDBParam.returnDataRegistration(userID) + " ]|, a certain user registered on the site 'Lamp corner' using your email. " +
                     "<br/>If it was you, then please confirm your email address by following this link: <br/>" + link + "&confirm=true .\n ";
 
-            EmailSender.here.sendEmail(themeEmail, sendTextEmail, UserDBParam.returnStringParam(user_idCookie,"email"));
+            EmailSender.here.sendEmail(themeEmail, sendTextEmail, UserDBParam.returnStringParam(userID,"email"));
             resp.sendRedirect(getServletContext().getContextPath() + "/sendAgain?sendEmail=true");
         }
         else {

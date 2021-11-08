@@ -26,7 +26,7 @@
     <script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/static/js/cancel.js"></script>
     <script src="${pageContext.request.contextPath}/static/js/showPas.js"></script>
-    <script src="${pageContext.request.contextPath}/static/js/sendFormStop.js" defer></script>
+    <script src="${pageContext.request.contextPath}/static/js/sendFormStop.js"></script>
     <script src="${pageContext.request.contextPath}/static/js/logSiteAlert.js" async></script>
 
     <title>Lamp corner</title>

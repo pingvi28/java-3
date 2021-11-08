@@ -25,11 +25,40 @@
 	-webkit-animation: spin 2s linear infinite;
 	animation: spin 2s linear infinite
 }
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0)
+    }
+    100% {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg)
+    }
+}
+@keyframes spin {
+    0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0)
+    }
+    100% {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg)
+    }
+}
+.bx-heart-circle{
+    font-size: x-large;
+}
 .bx-arrow-to-left:before {
 	content: "\e91d"
 }
 .bx-cog:before {
 	content: "\e9d0"
+}
+.bx-heart:before {
+    content: "\ea6c"
+}
+.bx-heart-circle:before {
+    content: "\ea6d"
 }
 .bx-home-alt:before {
 	content: "\ea75"
@@ -45,5 +74,12 @@
 }
 .bx-user-circle:before {
 	content: "\ebc1"
+}
+.bx-btn{
+    padding: 4px 60px;
+    line-height: 0.8
+}
+.bx-btn:focus{
+    color:#fce38a ;
 }
 

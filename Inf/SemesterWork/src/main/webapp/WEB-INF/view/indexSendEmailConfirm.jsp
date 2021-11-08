@@ -11,9 +11,12 @@
 <head>
     <!--favicon-->
     <link rel="icon" href="${pageContext.request.contextPath}/static/images/icons/favicon.png" type="image/png"/>
-    <!--my CSS -->
+    <!--CSS -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/common.css" type="text/css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/sendEmail.css" type="text/css">
+    <!--JS-->
+    <script src="${pageContext.request.contextPath}/static/js/logSiteAlert.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/sendFormStop.js"></script>
 
     <title>SendEmail</title>
 </head>
@@ -47,9 +50,6 @@
             </c:if>
         </div>
     </div>
-    <!--JS-->
-    <script src="${pageContext.request.contextPath}/static/js/logSiteAlert.js"></script>
-    <script src="${pageContext.request.contextPath}/static/js/sendFormStop.js"></script>
 </body>
 
 </html>
