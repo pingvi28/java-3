@@ -1,9 +1,5 @@
 package ru.kpfu.itis.group001.kashapova.servlets;
 
-import ru.kpfu.itis.group001.kashapova.java_class.userDB.ChangeEmailConfirmed;
-import ru.kpfu.itis.group001.kashapova.java_class.userDB.ChangerUserDB;
-import ru.kpfu.itis.group001.kashapova.java_class.userDB.UserDBParam;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -17,10 +13,9 @@ public class LogoutServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Cookie cookie = null;
         Cookie[] cookies = null;
-
         cookies = req.getCookies();
+
         if(cookies!=null){
             for(Cookie c:cookies) {
                 switch (c.getName()) {
@@ -34,5 +29,10 @@ public class LogoutServlet extends HttpServlet {
         }
 
         resp.sendRedirect(getServletContext().getContextPath() + "/login");
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("Here");
     }
 }

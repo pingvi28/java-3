@@ -1,10 +1,10 @@
 package ru.kpfu.itis.group001.kashapova.servlets;
 
-import ru.kpfu.itis.group001.kashapova.java_class.confirmDB.ConfirmUserDBParam;
-import ru.kpfu.itis.group001.kashapova.java_class.confirmDB.ConfirmUsersConnect;
-import ru.kpfu.itis.group001.kashapova.java_class.subsidiary.EmailSender;
-import ru.kpfu.itis.group001.kashapova.java_class.userDB.ChangerUserDB;
-import ru.kpfu.itis.group001.kashapova.java_class.confirmDB.UserTokenEmail;
+import ru.kpfu.itis.group001.kashapova.services.confirmDB.ConfirmUserDBParam;
+import ru.kpfu.itis.group001.kashapova.services.confirmDB.ConfirmUsersConnect;
+import ru.kpfu.itis.group001.kashapova.java_class.EmailSender;
+import ru.kpfu.itis.group001.kashapova.services.userDB.ChangerUserDBServices;
+import ru.kpfu.itis.group001.kashapova.services.confirmDB.UserTokenEmailServices;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,7 +24,7 @@ public class SignUpServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         link = req.getScheme() + "://" + req.getServerName() + ":" + req.getServerPort();
-        ChangerUserDB dbconnection = new ChangerUserDB();
+        ChangerUserDBServices dbconnection = new ChangerUserDBServices();
         ConfirmUsersConnect confirmUsersConnect = new ConfirmUsersConnect();
         String name = req.getParameter("name");
         String surname = req.getParameter("surname");
@@ -38,7 +38,7 @@ public class SignUpServlet extends HttpServlet {
             userIDCookie.setMaxAge(60*60*2);
             resp.addCookie(userIDCookie);
 
-            link = link + getServletContext().getContextPath() + "/login?token=" +  UserTokenEmail.returnToken(userId);
+            link = link + getServletContext().getContextPath() + "/login?token=" +  UserTokenEmailServices.returnToken(userId);
             String sendTextEmail = "Hello!<br/> <br/> " +
                     "Today is date |[" + ConfirmUserDBParam.returnDataRegistration(userId) + " ]|, a certain user registered on the site 'Lamp corner' using your email. " +
                     "<br/>If it was you, then please confirm your email address by following this link: <br/>" + link + "&confirm=true .\n ";

@@ -1,9 +1,8 @@
 package ru.kpfu.itis.group001.kashapova.servlets;
 
-import ru.kpfu.itis.group001.kashapova.java_class.confirmDB.ConfirmUsersConnect;
-import ru.kpfu.itis.group001.kashapova.java_class.userDB.ChangeEmailConfirmed;
-import ru.kpfu.itis.group001.kashapova.java_class.userDB.ChangerUserDB;
-import ru.kpfu.itis.group001.kashapova.java_class.userDB.UserDBParam;
+import ru.kpfu.itis.group001.kashapova.services.userDB.ChangeEmailConfirmedServices;
+import ru.kpfu.itis.group001.kashapova.services.userDB.ChangerUserDBServices;
+import ru.kpfu.itis.group001.kashapova.services.userDB.UserDBParam;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,7 +12,7 @@ import java.io.IOException;
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
     private boolean remember = false;
-    ChangerUserDB connection = new ChangerUserDB();
+    ChangerUserDBServices connection = new ChangerUserDBServices();
     private int user_idCookie = -1;
 
     public void init(HttpServletRequest req) {
@@ -30,12 +29,18 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         init(req);
+        String vkLink = "https://oauth.vk.com/authorize?client_id=7984087&display=page&redirect_uri=" +
+                req.getScheme() + "://" + req.getServerName() +
+                ":" + req.getServerPort() + getServletContext().getContextPath() +
+                "/vk_auth&scope=email&response_type=code&v=5.131";
+
+        req.setAttribute("VKlink", vkLink);
         String token = req.getParameter("token");
         // есть ли токен == перешел по почте -> меняю параметр
         if(token != null && !token.equals("")) {
             if(user_idCookie > 0){
                 System.out.println("do" + user_idCookie);
-                ChangeEmailConfirmed.changeEmailConfirmed(user_idCookie);
+                ChangeEmailConfirmedServices.changeEmailConfirmed(user_idCookie);
             }
         }
         req.getRequestDispatcher("/WEB-INF/view/indexLogin.jsp").forward(req, resp);

@@ -1,8 +1,8 @@
 package ru.kpfu.itis.group001.kashapova.servlets;
 
-import ru.kpfu.itis.group001.kashapova.java_class.subsidiary.MyHash;
-import ru.kpfu.itis.group001.kashapova.java_class.userDB.ChangerUserDB;
-import ru.kpfu.itis.group001.kashapova.java_class.userDB.UserDBParam;
+import ru.kpfu.itis.group001.kashapova.java_class.MyHash;
+import ru.kpfu.itis.group001.kashapova.services.userDB.ChangerUserDBServices;
+import ru.kpfu.itis.group001.kashapova.services.userDB.UserDBParam;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -41,7 +41,7 @@ public class UpdatePasServlet extends HttpServlet {
         String password = req.getParameter("passwordCur2");
         String passwordNew = req.getParameter("passwordRep");
         if(MyHash.createHashPassword(password).equals(UserDBParam.returnStringParam(user_idCookie,"hash"))){
-            boolean success = ChangerUserDB.updateProfilePass(user_idCookie,passwordNew);
+            boolean success = ChangerUserDBServices.updateProfilePass(user_idCookie,passwordNew);
             if(success){
                 resp.sendRedirect(getServletContext().getContextPath() + "/userProfile?update=success");
             }

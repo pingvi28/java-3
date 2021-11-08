@@ -1,11 +1,8 @@
-package ru.kpfu.itis.group001.kashapova.java_class.userDB;
+package ru.kpfu.itis.group001.kashapova.services.userDB;
 
 import properties.DBproperties;
-import ru.kpfu.itis.group001.kashapova.java_class.confirmDB.UserTokenEmail;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.sql.Statement;
 
 /**

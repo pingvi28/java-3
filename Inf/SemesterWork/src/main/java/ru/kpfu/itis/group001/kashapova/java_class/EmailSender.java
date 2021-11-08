@@ -1,4 +1,4 @@
-package ru.kpfu.itis.group001.kashapova.java_class.subsidiary;
+package ru.kpfu.itis.group001.kashapova.java_class;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;

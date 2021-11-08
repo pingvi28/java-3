@@ -1,10 +1,9 @@
 package ru.kpfu.itis.group001.kashapova.servlets;
 
-import ru.kpfu.itis.group001.kashapova.java_class.confirmDB.ConfirmUserDBParam;
-import ru.kpfu.itis.group001.kashapova.java_class.confirmDB.ConfirmUsersConnect;
-import ru.kpfu.itis.group001.kashapova.java_class.confirmDB.UserTokenEmail;
-import ru.kpfu.itis.group001.kashapova.java_class.subsidiary.EmailSender;
-import ru.kpfu.itis.group001.kashapova.java_class.userDB.UserDBParam;
+import ru.kpfu.itis.group001.kashapova.services.confirmDB.ConfirmUserDBParam;
+import ru.kpfu.itis.group001.kashapova.services.confirmDB.UserTokenEmailServices;
+import ru.kpfu.itis.group001.kashapova.java_class.EmailSender;
+import ru.kpfu.itis.group001.kashapova.services.userDB.UserDBParam;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -38,12 +37,12 @@ public class SendEmailLoginServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        UserTokenEmail userTokenEmail = new UserTokenEmail();
+        UserTokenEmailServices userTokenEmailServices = new UserTokenEmailServices();
         init(req);
         String link = req.getScheme() + "://" + req.getServerName() + ":" + req.getServerPort();
         if(user_idCookie != -1){
             System.out.println();
-            link = link + getServletContext().getContextPath() + "/login?token=" + userTokenEmail.returnToken(user_idCookie);
+            link = link + getServletContext().getContextPath() + "/login?token=" + userTokenEmailServices.returnToken(user_idCookie);
             String sendTextEmail = "Hello!<br/> <br/> " +
                     "|[" + ConfirmUserDBParam.returnDataRegistration(user_idCookie) + " ]|, a certain user registered on the site 'Lamp corner' using your email. " +
                     "<br/>If it was you, then please confirm your email address by following this link: <br/>" + link + "&confirm=true .\n ";

@@ -15,4 +15,8 @@ if (url.searchParams.get("update") === "-10") alert("\nтвой текущий �
 if (url.searchParams.get("update") === "-11") alert("\nне смогли обновить данные");
 if (url.searchParams.get("update") === "-12") alert("\nне смогли обновить твой пароль. Попробуй позже");
 
+if (url.searchParams.get("vkAuth") === "0") alert("\nизвини, мы не смогли связаться с сервисом вк");
+if (url.searchParams.get("vkAuth") === "-1") alert("\nнекорректно пришел запрос с вк");
+if (url.searchParams.get("vkAuth") === "-2") alert("\nой,мы не смогли создать пользователя");
+
 //window.history.replaceState({}, document.title, "/");

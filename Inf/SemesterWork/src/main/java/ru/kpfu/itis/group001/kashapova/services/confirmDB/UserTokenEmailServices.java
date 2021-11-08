@@ -1,6 +1,6 @@
-package ru.kpfu.itis.group001.kashapova.java_class.confirmDB;
+package ru.kpfu.itis.group001.kashapova.services.confirmDB;
 
-import ru.kpfu.itis.group001.kashapova.java_class.subsidiary.MyHash;
+import ru.kpfu.itis.group001.kashapova.java_class.MyHash;
 
 import java.util.Date;
 import java.sql.*;
@@ -13,7 +13,7 @@ import java.sql.*;
  * при регистрации формируется токен, который записывается в отдельную таблицу
  */
 
-public class UserTokenEmail extends ConfirmUsersConnect {
+public class UserTokenEmailServices extends ConfirmUsersConnect {
 
     public static void createToken( int userID,String email) {
         try (Connection connection = DriverManager.getConnection(url, user, passwordDB);

@@ -1,4 +1,4 @@
-package ru.kpfu.itis.group001.kashapova.java_class.userDB;
+package ru.kpfu.itis.group001.kashapova.services.userDB;
 
 import java.sql.*;
 
@@ -8,7 +8,7 @@ import java.sql.*;
  * Sem 1
  */
 
-public class ChangeEmailConfirmed extends UserConnnect {
+public class ChangeEmailConfirmedServices extends UserConnnect {
 
     public static boolean changeEmailConfirmed(int user_id){
         try (Connection connection = DriverManager.getConnection(url, user, passwordDB);

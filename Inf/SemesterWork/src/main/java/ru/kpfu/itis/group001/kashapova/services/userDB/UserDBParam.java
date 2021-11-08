@@ -1,4 +1,4 @@
-package ru.kpfu.itis.group001.kashapova.java_class.userDB;
+package ru.kpfu.itis.group001.kashapova.services.userDB;
 
 import java.sql.*;
 

@@ -1,11 +1,6 @@
-package ru.kpfu.itis.group001.kashapova.java_class.confirmDB;
+package ru.kpfu.itis.group001.kashapova.services.confirmDB;
 
 import properties.DBproperties;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
 
 /**
  * @author Kashapova Dilyara

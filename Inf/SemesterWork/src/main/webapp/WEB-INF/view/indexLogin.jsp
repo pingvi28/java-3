@@ -4,6 +4,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -66,7 +67,7 @@
                                 </div>
                                 <span class="create_ac"></span>
                                 <span class="create_ac ctr">Войти через:&emsp;
-                                        <a href="https://oauth.vk.com/authorize?client_id=7984087&display=page&redirect_uri=http://localhost:8084/lamp/vk_auth&scope=email&response_type=code&v=5.131">
+                                        <a href=<c:out value="${VKlink}" default="${pageContext.request.contextPath}/signUp" />>
                                             <img class="img vk"
                                                  src="${pageContext.request.contextPath}/static/images/icons/vk.png">
                                         </a>

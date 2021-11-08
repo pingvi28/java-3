@@ -1,8 +1,8 @@
 package ru.kpfu.itis.group001.kashapova.servlets;
 
-import ru.kpfu.itis.group001.kashapova.java_class.subsidiary.MyHash;
-import ru.kpfu.itis.group001.kashapova.java_class.userDB.ChangerUserDB;
-import ru.kpfu.itis.group001.kashapova.java_class.userDB.UserDBParam;
+import ru.kpfu.itis.group001.kashapova.java_class.MyHash;
+import ru.kpfu.itis.group001.kashapova.services.userDB.ChangerUserDBServices;
+import ru.kpfu.itis.group001.kashapova.services.userDB.UserDBParam;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -44,7 +44,7 @@ public class UpdateNSServlet extends HttpServlet{
             if(surname.equals("null")){
                 name = UserDBParam.returnStringParam(user_idCookie,"surname");
             }
-            boolean success = ChangerUserDB.updateProfileNS(user_idCookie,name,surname);
+            boolean success = ChangerUserDBServices.updateProfileNS(user_idCookie,name,surname);
             if(success){
                 resp.sendRedirect(getServletContext().getContextPath() + "/userProfile?update=success");
             }
