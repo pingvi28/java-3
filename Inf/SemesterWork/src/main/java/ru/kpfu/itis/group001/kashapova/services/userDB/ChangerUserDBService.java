@@ -41,7 +41,7 @@ public class ChangerUserDBService extends UserConnnect{
      * @param email
      * @return
      */
-    public boolean validate(String email) {
+    public static boolean validate(String email) {
         try (Connection connection = DriverManager.getConnection(url, user, passwordDB);
              Statement statement = connection.createStatement()) {
             Class.forName("org.postgresql.Driver");
@@ -51,6 +51,19 @@ public class ChangerUserDBService extends UserConnnect{
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("(CUDB#validate em) " + e.getMessage() + " : " + e.getCause());
             return false;
+        }
+    }
+
+    public static int validateVK(String email) {
+        try (Connection connection = DriverManager.getConnection(url, user, passwordDB);
+             Statement statement = connection.createStatement()) {
+            Class.forName("org.postgresql.Driver");
+            ResultSet rs = statement.executeQuery("select * from " + tableWithUser + " where email='" + email + "';");
+            if (!rs.next()) return -1;
+            return rs.getInt("id");
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println("(CUDB#validate em) " + e.getMessage() + " : " + e.getCause());
+            return -1;
         }
     }
 

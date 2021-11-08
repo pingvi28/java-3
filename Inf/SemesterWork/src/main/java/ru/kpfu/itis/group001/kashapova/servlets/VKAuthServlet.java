@@ -10,6 +10,8 @@ import ru.kpfu.itis.group001.kashapova.services.confirmDB.UserTokenEmailServices
 import ru.kpfu.itis.group001.kashapova.services.cookieTokenDB.ChangerCookieTokenService;
 import ru.kpfu.itis.group001.kashapova.services.userDB.ChangeEmailConfirmedServices;
 import ru.kpfu.itis.group001.kashapova.services.userDB.ChangerUserDBService;
+import ru.kpfu.itis.group001.kashapova.services.userDB.UserConnnect;
+import ru.kpfu.itis.group001.kashapova.services.userDB.UserDBParam;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,6 +33,7 @@ public class VKAuthServlet extends HttpServlet {
     private final Gson gson = new Gson();
     protected static VKAccessToken accessToken = new VKAccessToken();
     protected static VKOauthUser vkOauthUser = new VKOauthUser();
+    private UserConnnect connection = new UserConnnect();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -50,7 +53,23 @@ public class VKAuthServlet extends HttpServlet {
             resp.sendRedirect(getServletContext().getContextPath() + "/login?vkAuth=1");
         }
 
-        req.getRequestDispatcher("/WEB-INF/view/indexCreatePasswordVK.jsp").forward(req, resp);
+        if(ChangerUserDBService.validate(vkOauthUser.email)){
+            int id = ChangerUserDBService.validateVK(vkOauthUser.email);
+
+            Cookie userCookie = new Cookie("user_id_cookie",  ChangerCookieTokenService.returnToken(id));
+            userCookie.setMaxAge(60*60*24*5);
+            resp.addCookie(userCookie);
+
+            Cookie rememberCookie = new Cookie("remember_cookie", String.valueOf(true));
+            rememberCookie.setMaxAge(60*60*24*5);
+            resp.addCookie(rememberCookie);
+
+            System.gc();
+            resp.sendRedirect(getServletContext().getContextPath() + "/corner");
+        }
+        else {
+            req.getRequestDispatcher("/WEB-INF/view/indexCreatePasswordVK.jsp").forward(req, resp);
+        }
     }
 
     @Override
