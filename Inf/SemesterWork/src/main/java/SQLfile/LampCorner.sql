@@ -22,3 +22,9 @@ CREATE TABLE cookie_token
     user_id           INTEGER REFERENCES user_lamp_corner (id),
     cook_token             VARCHAR(150)
 );
+
+CREATE TABLE video_main
+(
+    id            BIGSERIAL PRIMARY KEY,
+    video_link             VARCHAR(50)
+);

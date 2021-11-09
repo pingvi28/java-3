@@ -40,7 +40,7 @@ public class DeleteUserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         init(req);
         String password = req.getParameter("passwordCur3");
-        System.out.println(password);
+
         int userID = ChangerCookieTokenService.returnUserID(user_idCookie);
         if(MyHash.createHashPassword(password).equals(UserDBParam.returnStringParam(userID,"hash"))){
             boolean success = ChangerUserDBService.deleteProfile(userID);
