@@ -49,4 +49,19 @@ public class ChangerCookieTokenService extends CookieTokenDB{
             return -1;
         }
     }
+
+    public static boolean deleteProfile(int user_id){
+        try (Connection connection = DriverManager.getConnection(url, user, passwordDB);
+             PreparedStatement statement = connection.prepareStatement(
+                     "delete from " + tableWithUserCookieID + " where user_id= ? ;")) {
+            //заранее экранирует значение
+            Class.forName("org.postgresql.Driver");
+            statement.setInt(1, user_id);
+            statement.executeUpdate();
+            return true;
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println("(CCTS#deleteProfile) " + e.getMessage() + " : " + e.getCause());
+            return false;
+        }
+    }
 }

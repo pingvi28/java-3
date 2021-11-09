@@ -40,5 +40,15 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         return false;
     });
+    $('body').on('click', '.password-control5', function(){
+        if ($('#passwordCur3').attr('type') === 'password'){
+            $(this).addClass('view');
+            $('#passwordCur3').attr('type', 'text');
+        } else {
+            $(this).removeClass('view');
+            $('#passwordCur3').attr('type', 'password');
+        }
+        return false;
+    });
 });
 

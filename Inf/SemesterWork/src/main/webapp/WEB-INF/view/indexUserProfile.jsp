@@ -131,9 +131,38 @@
 
                         <div class="col-lg-4">
                             <div class="d-flex flex-column align-items-center text-center">
-
+                                <div class="">
+                                    <div class="card">
+                                        <div class="card-body" id="3form">
+                                            <form action="${pageContext.request.contextPath}/deleteAccount" method="post">
+                                                <div class="row mb-3">
+                                                    <div class="upd col-sm-3">
+                                                        <h6 class="mb-0">Текущий пароль</h6>
+                                                    </div>
+                                                    <div class="col-sm-9">
+                                                        <label>
+                                                            <input type="password" name="passwordCur3" id="passwordCur3"
+                                                                   class="form-control item"
+                                                                   minlength="6" placeholder="текущий пароль" required/>
+                                                        </label>
+                                                        <a href="#" class="password-control5"></a>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-3"></div>
+                                                    <div class="col-sm-9">
+                                                        <label>
+                                                            <input type="submit" class="btn" value="delete"/>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
                         <div class="col-lg-8">
                             <div class="card">
                                 <div class="card-body" id="2form">

@@ -19,6 +19,10 @@ document.addEventListener('DOMContentLoaded', function () {
     if (url.searchParams.get("vkAuth") === "0") alert("\nизвини, мы не смогли связаться с сервисом вк");
     if (url.searchParams.get("vkAuth") === "-1") alert("\nнекорректно пришел запрос с вк");
     if (url.searchParams.get("vkAuth") === "-2") alert("\nой,мы не смогли создать пользователя");
+
+    if (url.searchParams.get("delete") === "success") alert("\n профиль удален");
+    if (url.searchParams.get("delete") === "-10") alert("\nтвой текущий пароль не такой...Перепроверь, пожалуйста.\nИ ты уверен, что хочешь уйти?");
+    if (url.searchParams.get("delete") === "-11") alert("\nмы не смогли удалить твои данные...");
 });
 
 

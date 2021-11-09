@@ -130,6 +130,24 @@ public class ChangerUserDBService extends UserConnnect{
             return false;
         }
     }
+
+    public static boolean deleteProfile(int user_id){
+        ChangerCookieTokenService.deleteProfile(user_id);
+        UserTokenEmailServices.deleteProfile(user_id);
+
+        try (Connection connection = DriverManager.getConnection(url, user, passwordDB);
+             PreparedStatement statement = connection.prepareStatement(
+                     "delete from " + tableWithUser + " where id= ? ;")) {
+            //заранее экранирует значение
+            Class.forName("org.postgresql.Driver");
+            statement.setInt(1, user_id);
+            statement.executeUpdate();
+            return true;
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println("(CUDB#deleteProfile) " + e.getMessage() + " : " + e.getCause());
+            return false;
+        }
+    }
 }
 
 

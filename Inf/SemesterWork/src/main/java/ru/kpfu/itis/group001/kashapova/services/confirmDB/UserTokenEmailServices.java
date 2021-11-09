@@ -44,4 +44,19 @@ public class UserTokenEmailServices extends ConfirmUsersConnect {
             return "";
         }
     }
+
+    public static boolean deleteProfile(int user_id){
+        try (Connection connection = DriverManager.getConnection(url, user, passwordDB);
+             PreparedStatement statement = connection.prepareStatement(
+                     "delete from " + tableConfirmUsers + " where user_id= ? ;")) {
+            //заранее экранирует значение
+            Class.forName("org.postgresql.Driver");
+            statement.setInt(1, user_id);
+            statement.executeUpdate();
+            return true;
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println("(UTE#deleteProfile) " + e.getMessage() + " : " + e.getCause());
+            return false;
+        }
+    }
 }
