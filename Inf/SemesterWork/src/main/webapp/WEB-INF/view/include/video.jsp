@@ -9,7 +9,8 @@
 <div class="myRow ytd-rich-item-renderer">
     <div class="bg-light text-center">
         <div class="p-4 text-dark rounded">
-            <iframe class="videoFrame" width="220" height="130" src="" frameborder="0" allowfullscreen></iframe>
+            <iframe class="videoFrame" width="200" height="110" src="" frameborder="0" allowfullscreen></iframe>
         </div>
+        <button type="submit" name="link" class=" bxVideoFrame btn btn-bx bx bx-heart-circle" scr=""></button>
     </div>
 </div>

@@ -84,7 +84,7 @@ section {
 	margin-left: 250px
 }
 .page-content {
-	padding: 0 7rem 0 2rem
+	padding: 0 7rem 0 0
 }
 .wrapper.toggled .topbar {
 	left: 70px
@@ -304,4 +304,7 @@ input::placeholder {
     display:flex;
     justify-content: right;
     align-items:center;
+}
+.holder{
+    margin-bottom: 69px;
 }

@@ -1,7 +1,6 @@
 package ru.kpfu.itis.group001.kashapova.servlets;
 
 import ru.kpfu.itis.group001.kashapova.services.confirmDB.ConfirmUserDBParam;
-import ru.kpfu.itis.group001.kashapova.services.confirmDB.ConfirmUsersConnect;
 import ru.kpfu.itis.group001.kashapova.java_class.EmailSender;
 import ru.kpfu.itis.group001.kashapova.services.cookieTokenDB.ChangerCookieTokenService;
 import ru.kpfu.itis.group001.kashapova.services.userDB.ChangerUserDBService;

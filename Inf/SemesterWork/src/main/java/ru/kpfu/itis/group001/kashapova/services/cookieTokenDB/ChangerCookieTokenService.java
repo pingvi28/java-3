@@ -1,11 +1,10 @@
 package ru.kpfu.itis.group001.kashapova.services.cookieTokenDB;
 
 import ru.kpfu.itis.group001.kashapova.java_class.MyHash;
-import ru.kpfu.itis.group001.kashapova.services.confirmDB.UserTokenEmailServices;
 
 import java.sql.*;
 
-public class ChangerCookieTokenService extends CookieTokenDB{
+public class ChangerCookieTokenService extends CookieTokenDBConnect {
     public static String add(int id) {
         try (Connection connection = DriverManager.getConnection(url, user, passwordDB);
              PreparedStatement statement = connection.prepareStatement(

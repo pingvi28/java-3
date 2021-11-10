@@ -8,7 +8,7 @@ import java.sql.*;
  * Sem 1
  */
 
-public class ChangeEmailConfirmedServices extends UserConnnect {
+public class ChangeEmailConfirmedServices extends UserDBConnect {
 
     public static boolean changeEmailConfirmed(int user_id){
         try (Connection connection = DriverManager.getConnection(url, user, passwordDB);
@@ -22,7 +22,7 @@ public class ChangeEmailConfirmedServices extends UserConnnect {
             }
             return true;
         } catch (ClassNotFoundException | SQLException e) {
-            System.out.println("(CEC#changeEmailConfirmed) " + e.getMessage() + " : " + e.getCause());
+            System.out.println("(CECS#changeEmailConfirmed) " + e.getMessage() + " : " + e.getCause());
             return false;
         }
     }

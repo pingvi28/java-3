@@ -30,6 +30,12 @@
                 <div class="menu-title">Личный кабинет</div>
             </a>
         </li>
+        <li>
+            <a href="${pageContext.request.contextPath}/">
+                <div class="parent-icon"><i class="bx bx-heart"></i></div>
+                <div class="menu-title">Избранное</div>
+            </a>
+        </li>
     </ul>
     <!--end navigation-->
 </div>

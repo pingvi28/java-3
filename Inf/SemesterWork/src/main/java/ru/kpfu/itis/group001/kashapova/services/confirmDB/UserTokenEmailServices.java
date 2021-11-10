@@ -10,10 +10,10 @@ import java.sql.*;
  * 11-001
  * Sem 1
  *
- * при регистрации формируется токен, который записывается в отдельную таблицу
+ * при регистрации формируется токен (email), который записывается в отдельную таблицу
  */
 
-public class UserTokenEmailServices extends ConfirmUsersConnect {
+public class UserTokenEmailServices extends ConfirmUsersDBConnect {
 
     public static void createToken( int userID,String email) {
         try (Connection connection = DriverManager.getConnection(url, user, passwordDB);
@@ -27,7 +27,7 @@ public class UserTokenEmailServices extends ConfirmUsersConnect {
             ResultSet rs = statement.executeQuery();
             rs.next();
         } catch (ClassNotFoundException | SQLException e) {
-            System.out.println("(UTE#createToken) " + e.getMessage() + " : " + e.getCause());
+            System.out.println("(UTES#createToken) " + e.getMessage() + " : " + e.getCause());
         }
     }
 
@@ -40,7 +40,7 @@ public class UserTokenEmailServices extends ConfirmUsersConnect {
             if (!rs.next()) return ""; //нет пользователя
             return rs.getString("token");
         } catch (ClassNotFoundException | SQLException e) {
-            System.out.println("(UTE#returnToken) " + e.getMessage() + " : " + e.getCause());
+            System.out.println("(UTES#returnToken) " + e.getMessage() + " : " + e.getCause());
             return "";
         }
     }
@@ -55,7 +55,7 @@ public class UserTokenEmailServices extends ConfirmUsersConnect {
             statement.executeUpdate();
             return true;
         } catch (ClassNotFoundException | SQLException e) {
-            System.out.println("(UTE#deleteProfile) " + e.getMessage() + " : " + e.getCause());
+            System.out.println("(UTES#deleteProfile) " + e.getMessage() + " : " + e.getCause());
             return false;
         }
     }

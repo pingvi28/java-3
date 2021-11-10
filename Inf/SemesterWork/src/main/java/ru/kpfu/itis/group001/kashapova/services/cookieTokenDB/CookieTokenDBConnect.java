@@ -11,7 +11,7 @@ import java.sql.Statement;
  * Sem 1
  */
 
-public class CookieTokenDB {
+public class CookieTokenDBConnect {
     protected static String url;
     protected static String user;
     protected static String passwordDB;
@@ -20,7 +20,7 @@ public class CookieTokenDB {
     /**
      * конструктор для присваивания параметров бд и установления связи
      */
-    public CookieTokenDB() {
+    public CookieTokenDBConnect() {
         url = DBproperties.url;
         user = DBproperties.user;
         passwordDB = DBproperties.passwordDB;

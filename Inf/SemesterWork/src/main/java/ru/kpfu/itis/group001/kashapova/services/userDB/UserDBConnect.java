@@ -1,8 +1,8 @@
 package ru.kpfu.itis.group001.kashapova.services.userDB;
 
 import properties.DBproperties;
-import ru.kpfu.itis.group001.kashapova.services.confirmDB.ConfirmUsersConnect;
-import ru.kpfu.itis.group001.kashapova.services.cookieTokenDB.CookieTokenDB;
+import ru.kpfu.itis.group001.kashapova.services.confirmDB.ConfirmUsersDBConnect;
+import ru.kpfu.itis.group001.kashapova.services.cookieTokenDB.CookieTokenDBConnect;
 
 import java.sql.Connection;
 import java.sql.Statement;
@@ -13,7 +13,7 @@ import java.sql.Statement;
  * Sem 1
  */
 
-public class UserConnnect {
+public class UserDBConnect {
     protected static Connection connection;
     protected static Statement statement;
     protected static String url;
@@ -24,7 +24,7 @@ public class UserConnnect {
     /**
      * конструктор для присваивания параметров бд и установления связи
      */
-    public UserConnnect() {
+    public UserDBConnect() {
         url = DBproperties.url;
         user = DBproperties.user;
         passwordDB = DBproperties.passwordDB;
@@ -35,10 +35,10 @@ public class UserConnnect {
     }
 
     public void cookieTokenDBConnect(){
-        CookieTokenDB cookieTokenDB = new CookieTokenDB();
+        CookieTokenDBConnect cookieTokenDB = new CookieTokenDBConnect();
     }
 
     public void confirmUsersDBConnect(){
-        ConfirmUsersConnect confirmUsersConnect = new ConfirmUsersConnect();
+        ConfirmUsersDBConnect confirmUsersConnect = new ConfirmUsersDBConnect();
     }
 }

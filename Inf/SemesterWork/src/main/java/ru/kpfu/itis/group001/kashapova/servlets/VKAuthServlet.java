@@ -1,17 +1,13 @@
 //https://vk.com/dev.php?method=authcode_flow_user
 package ru.kpfu.itis.group001.kashapova.servlets;
 
-import ru.kpfu.itis.group001.kashapova.java_class.EmailSender;
 import ru.kpfu.itis.group001.kashapova.java_class.VK.VKAccessToken;
 import ru.kpfu.itis.group001.kashapova.java_class.VK.VKOauthUser;
 import com.google.gson.Gson;
-import ru.kpfu.itis.group001.kashapova.services.confirmDB.ConfirmUserDBParam;
-import ru.kpfu.itis.group001.kashapova.services.confirmDB.UserTokenEmailServices;
 import ru.kpfu.itis.group001.kashapova.services.cookieTokenDB.ChangerCookieTokenService;
 import ru.kpfu.itis.group001.kashapova.services.userDB.ChangeEmailConfirmedServices;
 import ru.kpfu.itis.group001.kashapova.services.userDB.ChangerUserDBService;
-import ru.kpfu.itis.group001.kashapova.services.userDB.UserConnnect;
-import ru.kpfu.itis.group001.kashapova.services.userDB.UserDBParam;
+import ru.kpfu.itis.group001.kashapova.services.userDB.UserDBConnect;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -33,7 +29,7 @@ public class VKAuthServlet extends HttpServlet {
     private final Gson gson = new Gson();
     protected static VKAccessToken accessToken = new VKAccessToken();
     protected static VKOauthUser vkOauthUser = new VKOauthUser();
-    private UserConnnect connection = new UserConnnect();
+    private UserDBConnect connection = new UserDBConnect();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

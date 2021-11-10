@@ -12,7 +12,7 @@ import java.sql.*;
  * Sem 1
  */
 
-public class ChangerUserDBService extends UserConnnect{
+public class ChangerUserDBService extends UserDBConnect {
     /**
      * проверка при входе на сайт
      * @param email
@@ -31,7 +31,7 @@ public class ChangerUserDBService extends UserConnnect{
                 return rs.getInt("id");
             else return -2;
         } catch (ClassNotFoundException | SQLException e) {
-            System.out.println("(CUDB#validate em/pass) " + e.getMessage() + " : " + e.getCause());
+            System.out.println("(CUDBS#validate email/pass) " + e.getMessage() + " : " + e.getCause());
             return -3;
         }
     }
@@ -49,7 +49,7 @@ public class ChangerUserDBService extends UserConnnect{
             if (!rs.next()) return false;
             return true;
         } catch (ClassNotFoundException | SQLException e) {
-            System.out.println("(CUDB#validate em) " + e.getMessage() + " : " + e.getCause());
+            System.out.println("(CUDBS#validate email) " + e.getMessage() + " : " + e.getCause());
             return false;
         }
     }
@@ -62,7 +62,7 @@ public class ChangerUserDBService extends UserConnnect{
             if (!rs.next()) return -1;
             return rs.getInt("id");
         } catch (ClassNotFoundException | SQLException e) {
-            System.out.println("(CUDB#validate em) " + e.getMessage() + " : " + e.getCause());
+            System.out.println("(CUDBS#validate email) " + e.getMessage() + " : " + e.getCause());
             return -1;
         }
     }
@@ -90,7 +90,7 @@ public class ChangerUserDBService extends UserConnnect{
             UserTokenEmailServices.createToken(rs.getInt(1),email);
             return ChangerCookieTokenService.add(rs.getInt(1));
         } catch (ClassNotFoundException | SQLException e) {
-            System.out.println("(CUDB#add) " + e.getMessage() + " : " + e.getCause());
+            System.out.println("(CUDBS#add) " + e.getMessage() + " : " + e.getCause());
             return "";
         }
     }
@@ -107,7 +107,7 @@ public class ChangerUserDBService extends UserConnnect{
             if (rs.next()) return true;
             return true;
         } catch (ClassNotFoundException | SQLException e) {
-            System.out.println("(CUDB#updateProfileNS) " + e.getMessage() + " : " + e.getCause());
+            System.out.println("(CUDBS#updateProfileNS) " + e.getMessage() + " : " + e.getCause());
             return true;
         }
     }
@@ -126,7 +126,7 @@ public class ChangerUserDBService extends UserConnnect{
             if(e.getMessage().equals("No results were returned by the query.")){
                 return true;
             }
-            System.out.println("(CUDB#updateProfilePass) " + e.getMessage() + " : " + e.getCause());
+            System.out.println("(CUDBS#updateProfilePass) " + e.getMessage() + " : " + e.getCause());
             return false;
         }
     }
@@ -144,7 +144,7 @@ public class ChangerUserDBService extends UserConnnect{
             statement.executeUpdate();
             return true;
         } catch (ClassNotFoundException | SQLException e) {
-            System.out.println("(CUDB#deleteProfile) " + e.getMessage() + " : " + e.getCause());
+            System.out.println("(CUDBS#deleteProfile) " + e.getMessage() + " : " + e.getCause());
             return false;
         }
     }

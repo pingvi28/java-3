@@ -8,13 +8,13 @@ import properties.DBproperties;
  * Sem 1
  */
 
-public class ConfirmUsersConnect {
+public class ConfirmUsersDBConnect {
     protected static String url;
     protected static String user;
     protected static String passwordDB;
     protected static String tableConfirmUsers;
 
-    public ConfirmUsersConnect() {
+    public ConfirmUsersDBConnect() {
         url = DBproperties.url;
         user = DBproperties.user;
         passwordDB = DBproperties.passwordDB;

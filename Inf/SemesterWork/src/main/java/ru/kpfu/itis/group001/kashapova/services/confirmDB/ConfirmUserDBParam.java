@@ -9,7 +9,7 @@ import java.sql.*;
  *
  * возращение необходимых данных
  */
-public class ConfirmUserDBParam extends ConfirmUsersConnect {
+public class ConfirmUserDBParam extends ConfirmUsersDBConnect {
     public static String returnDataRegistration(int user_id){
         try (Connection connection = DriverManager.getConnection(url, user, passwordDB);
              Statement statement = connection.createStatement()) {

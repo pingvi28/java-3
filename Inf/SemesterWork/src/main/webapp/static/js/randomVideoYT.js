@@ -6,12 +6,24 @@
 // Каждый раз, когда выполняется обратный вызов, ему передается текущая итерация цикла, начиная с 0.
 // Что еще более важно, обратный вызов запускается в контексте текущего элемента DOM, поэтому ключевое слово this относится к элементу.
 document.addEventListener('DOMContentLoaded', function () {
-    let video = ["jtUc1gigfQo","u13BVkpEkDo", "zd44dgITV_Y", "Hkz4SB6wJBM", "MF9gZ4GXIeY","BM9qm8ll3OI","Wvxf3IhhfEE","vaEJhCzMhzE","Qt0-9mO-ZXY","36xNGBBtMa0", "tJsGGsPNakw","UOS5CP8tzYQ","QgD5A2v3cp0","z0j6-IHnrrI","Qbq6LdKvxcM","L18e2-IZTNU","7NOSDKb0HlU","Yx1wtgBi7w0" ];
+    let iVideo = [];
+    let strVideo = document.getElementById("jsonVideoArray").getAttribute('value');
+    let video = JSON.parse(strVideo);
+    let i = 0;
+    let flag = true;
+
+    //let video = ["jtUc1gigfQo","u13BVkpEkDo", "zd44dgITV_Y", "Hkz4SB6wJBM", "MF9gZ4GXIeY","BM9qm8ll3OI","Wvxf3IhhfEE","vaEJhCzMhzE","Qt0-9mO-ZXY","36xNGBBtMa0", "tJsGGsPNakw","UOS5CP8tzYQ","QgD5A2v3cp0","z0j6-IHnrrI","Qbq6LdKvxcM","L18e2-IZTNU","7NOSDKb0HlU","Yx1wtgBi7w0" ];
 
     $( ".videoFrame" ).each(function() {
         let randomNum = Math.floor((Math.random() * video.length));
         $( this ).attr('src', "https://www.youtube.com/embed/" + video[randomNum] + "?showinfo=0&modestbranding=1&color=white&loop=1&playlist="+ video[randomNum]);
+        iVideo.push(video[randomNum]);
+        console.log("sfddsf  " + video[randomNum])
         video.splice(randomNum, 1);
     });
 
+    $( ".bxVideoFrame" ).each(function() {
+        $( this ).attr('src', iVideo[i]);
+        i++;
+    });
 } );

@@ -10,8 +10,9 @@
 <html>
 
 <head>
-    <jsp:include page="include/styleMain.jsp" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/main/styleYT.css" type="text/css"/>
+    <jsp:include page="include/styleMain.jsp" />
+
     <!-- Bootstrap JS -->
     <script src="${pageContext.request.contextPath}/static/js/boot/bootstrap.bundle.min.js"></script>
     <!--plugins-->
@@ -28,6 +29,8 @@
 <body class="bg-theme bg-theme13">
 <!--wrapper-->
 <div class="wrapper toggled">
+    <h10 id="jsonVideoArray" hidden value= '${jsonVideoArray}' ></h10>
+
     <jsp:include page="include/sideBarWrapper.jsp" />
     <jsp:include page="include/header.jsp" />
     <section>
@@ -35,6 +38,11 @@
         <div class="page-wrapper holder">
             <div class="page-content">
                 <div class="ytd-rich-grid-video-renderer row row-cols-1 row-cols-md-2 row-cols-lg-4">
+                    <jsp:include page="include/video.jsp" />
+                    <jsp:include page="include/video.jsp" />
+                    <jsp:include page="include/video.jsp" />
+                    <jsp:include page="include/video.jsp" />
+
                     <jsp:include page="include/video.jsp" />
                     <jsp:include page="include/video.jsp" />
                     <jsp:include page="include/video.jsp" />

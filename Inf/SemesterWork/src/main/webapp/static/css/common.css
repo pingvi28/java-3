@@ -183,3 +183,9 @@ a:hover {
 .password-control5.view {
     background: url(https://snipp.ru/demo/495/no-view.svg) 0 0 no-repeat;
 }
+
+.btn-bx{
+    margin-bottom: 14px;
+    border: 1px solid #fff;
+    padding: 4px 60px;
+}

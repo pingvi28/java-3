@@ -24,5 +24,7 @@ yt-formatted-string[ellipsis-truncate] {
 }
 
 .myRow{
-    padding : 0;
+    padding : 0 10px 20px;
+    justify-content: center;
 }
+

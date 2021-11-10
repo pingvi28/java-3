@@ -1,10 +1,9 @@
 package ru.kpfu.itis.group001.kashapova.servlets;
 
 import ru.kpfu.itis.group001.kashapova.java_class.MyHash;
-import ru.kpfu.itis.group001.kashapova.services.confirmDB.UserTokenEmailServices;
 import ru.kpfu.itis.group001.kashapova.services.cookieTokenDB.ChangerCookieTokenService;
 import ru.kpfu.itis.group001.kashapova.services.userDB.ChangerUserDBService;
-import ru.kpfu.itis.group001.kashapova.services.userDB.UserConnnect;
+import ru.kpfu.itis.group001.kashapova.services.userDB.UserDBConnect;
 import ru.kpfu.itis.group001.kashapova.services.userDB.UserDBParam;
 
 import javax.servlet.ServletException;
@@ -18,7 +17,7 @@ import java.io.IOException;
 @WebServlet("/deleteAccount")
 public class DeleteUserServlet extends HttpServlet {
     private String user_idCookie = "";
-    private UserConnnect connnect = new UserConnnect();
+    private UserDBConnect connnect = new UserDBConnect();
 
     public void init(HttpServletRequest req) {
         Cookie[] cookies = req.getCookies();
