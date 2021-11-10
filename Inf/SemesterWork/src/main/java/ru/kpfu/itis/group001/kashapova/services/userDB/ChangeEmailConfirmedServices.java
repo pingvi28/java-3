@@ -6,12 +6,14 @@ import java.sql.*;
  * @author Kashapova Dilyara
  * 11-001
  * Sem 1
+ *
+ * изменение/работа с таблицей - user_lamp_corner
  */
 
-public class ChangeEmailConfirmedServices extends UserDBConnect {
+public class ChangeEmailConfirmedServices extends UserTableConnect {
 
     public static boolean changeEmailConfirmed(int user_id){
-        try (Connection connection = DriverManager.getConnection(url, user, passwordDB);
+        try (Connection connection = DriverManager.getConnection(url, user, password);
              Statement statement = connection.createStatement()) {
             Class.forName("org.postgresql.Driver");
             ResultSet rs = statement.executeQuery("select * from " + tableWithUser + " where id=" + user_id +";");

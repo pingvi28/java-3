@@ -2,8 +2,8 @@ package ru.kpfu.itis.group001.kashapova.servlets;
 
 import ru.kpfu.itis.group001.kashapova.java_class.MyHash;
 import ru.kpfu.itis.group001.kashapova.services.cookieTokenDB.ChangerCookieTokenService;
-import ru.kpfu.itis.group001.kashapova.services.userDB.ChangerUserDBService;
-import ru.kpfu.itis.group001.kashapova.services.userDB.UserDBParam;
+import ru.kpfu.itis.group001.kashapova.services.userDB.ChangerUserTableService;
+import ru.kpfu.itis.group001.kashapova.services.userDB.UserTableParam;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,7 +18,7 @@ public class UpdatePasServlet extends HttpServlet {
     private String user_idCookie = "";
 
     public void init(HttpServletRequest req) {
-        UserDBParam userDBParam = new UserDBParam();
+        UserTableParam userTableParam = new UserTableParam();
         Cookie[] cookies = req.getCookies();
         if(cookies!=null){
             for(Cookie c:cookies) {
@@ -41,8 +41,8 @@ public class UpdatePasServlet extends HttpServlet {
         String passwordNew = req.getParameter("passwordRep");
 
         int userID = ChangerCookieTokenService.returnUserID(user_idCookie);
-        if(MyHash.createHashPassword(password).equals(UserDBParam.returnStringParam(userID,"hash"))){
-            boolean success = ChangerUserDBService.updateProfilePass(userID,passwordNew);
+        if(MyHash.createHashPassword(password).equals(UserTableParam.returnStringParam(userID,"hash"))){
+            boolean success = ChangerUserTableService.updateProfilePass(userID,passwordNew);
             if(success){
                 resp.sendRedirect(getServletContext().getContextPath() + "/userProfile?update=success");
             }

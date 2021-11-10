@@ -6,18 +6,20 @@ import properties.DBproperties;
  * @author Kashapova Dilyara
  * 11-001
  * Sem 1
+ *
+ * конструктор для присваивания параметров бд и установления связи с confirm_users
  */
 
-public class ConfirmUsersDBConnect {
+public class ConfirmUsersTableConnect {
     protected static String url;
     protected static String user;
-    protected static String passwordDB;
+    protected static String password;
     protected static String tableConfirmUsers;
 
-    public ConfirmUsersDBConnect() {
+    public ConfirmUsersTableConnect() {
         url = DBproperties.url;
         user = DBproperties.user;
-        passwordDB = DBproperties.passwordDB;
+        password = DBproperties.passwordDB;
         tableConfirmUsers = DBproperties.tableConfirmUsers;
     }
 }

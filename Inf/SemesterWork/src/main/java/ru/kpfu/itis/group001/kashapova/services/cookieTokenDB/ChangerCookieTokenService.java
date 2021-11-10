@@ -4,9 +4,15 @@ import ru.kpfu.itis.group001.kashapova.java_class.MyHash;
 
 import java.sql.*;
 
-public class ChangerCookieTokenService extends CookieTokenDBConnect {
+/**
+ * @author Kashapova Dilyara
+ * 11-001
+ * Sem 1
+ */
+
+public class ChangerCookieTokenService extends CookieTokenTableConnect {
     public static String add(int id) {
-        try (Connection connection = DriverManager.getConnection(url, user, passwordDB);
+        try (Connection connection = DriverManager.getConnection(url, user, password);
              PreparedStatement statement = connection.prepareStatement(
                      "insert into " + tableWithUserCookieID + " (user_id,cook_token) values (? ,?) returning user_id;")) {
             //заранее экранирует значение
@@ -24,7 +30,7 @@ public class ChangerCookieTokenService extends CookieTokenDBConnect {
     }
 
     public static String returnToken(int id){
-        try (Connection connection = DriverManager.getConnection(url, user, passwordDB);
+        try (Connection connection = DriverManager.getConnection(url, user, password);
              Statement statement = connection.createStatement()) {
             Class.forName("org.postgresql.Driver");
             ResultSet rs = statement.executeQuery("select * from " + tableWithUserCookieID + " where user_id=" +  id +";");
@@ -37,7 +43,7 @@ public class ChangerCookieTokenService extends CookieTokenDBConnect {
     }
 
     public static int returnUserID(String cookieToken){
-        try (Connection connection = DriverManager.getConnection(url, user, passwordDB);
+        try (Connection connection = DriverManager.getConnection(url, user, password);
              Statement statement = connection.createStatement()) {
             Class.forName("org.postgresql.Driver");
             ResultSet rs = statement.executeQuery("select * from " + tableWithUserCookieID + " where cook_token=\'" +  cookieToken +"\';");
@@ -50,7 +56,7 @@ public class ChangerCookieTokenService extends CookieTokenDBConnect {
     }
 
     public static boolean deleteProfile(int user_id){
-        try (Connection connection = DriverManager.getConnection(url, user, passwordDB);
+        try (Connection connection = DriverManager.getConnection(url, user, password);
              PreparedStatement statement = connection.prepareStatement(
                      "delete from " + tableWithUserCookieID + " where user_id= ? ;")) {
             //заранее экранирует значение

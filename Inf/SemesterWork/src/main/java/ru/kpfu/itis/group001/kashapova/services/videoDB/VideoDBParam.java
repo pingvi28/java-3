@@ -1,13 +1,20 @@
 package ru.kpfu.itis.group001.kashapova.services.videoDB;
 
 import java.sql.*;
-import java.util.ArrayList;
+
+/**
+ * @author Kashapova Dilyara
+ * 11-001
+ * Sem 1
+ *
+ * возращение небходимых полей из video_main
+ */
 
 public class  VideoDBParam extends VideoDBConnect{
     public static String[] videoLink;
 
     public static String[] returnVideoArray(){
-        try (Connection connection = DriverManager.getConnection(url, user, passwordDB);
+        try (Connection connection = DriverManager.getConnection(url, user, password);
              Statement statement = connection.createStatement()) {
             Class.forName("org.postgresql.Driver");
             int count = getNumberRows();
@@ -28,16 +35,15 @@ public class  VideoDBParam extends VideoDBConnect{
     }
 
     private static int getNumberRows(){
-        try(Connection connection = DriverManager.getConnection(url, user, passwordDB);
+        try(Connection connection = DriverManager.getConnection(url, user, password);
             Statement statement = connection.createStatement()) {
 
             ResultSet rs = statement.executeQuery("select * from " + tableWithVideo + ";");
             rs = statement.executeQuery("select count (*) from " + tableWithVideo + ";");
-            // get the number of rows from the result set
             rs.next();
             return rs.getInt(1);
         } catch (Exception e){
-            System.out.println("Error getting row count");
+            System.out.println("VDBP#Error getting row count");
             e.printStackTrace();
         }
         return 0;

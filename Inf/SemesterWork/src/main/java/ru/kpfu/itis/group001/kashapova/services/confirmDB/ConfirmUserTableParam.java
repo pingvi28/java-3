@@ -7,11 +7,11 @@ import java.sql.*;
  * 11-001
  * Sem 1
  *
- * возращение необходимых данных
+ * возращение необходимых данных из ConfirmUsersDB
  */
-public class ConfirmUserDBParam extends ConfirmUsersDBConnect {
+public class ConfirmUserTableParam extends ConfirmUsersTableConnect {
     public static String returnDataRegistration(int user_id){
-        try (Connection connection = DriverManager.getConnection(url, user, passwordDB);
+        try (Connection connection = DriverManager.getConnection(url, user, password);
              Statement statement = connection.createStatement()) {
             Class.forName("org.postgresql.Driver");
             ResultSet rs = statement.executeQuery("select * from " + tableConfirmUsers + " where user_id=" + user_id +";");

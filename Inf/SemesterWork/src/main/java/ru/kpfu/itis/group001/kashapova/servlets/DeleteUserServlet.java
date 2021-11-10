@@ -2,9 +2,9 @@ package ru.kpfu.itis.group001.kashapova.servlets;
 
 import ru.kpfu.itis.group001.kashapova.java_class.MyHash;
 import ru.kpfu.itis.group001.kashapova.services.cookieTokenDB.ChangerCookieTokenService;
-import ru.kpfu.itis.group001.kashapova.services.userDB.ChangerUserDBService;
-import ru.kpfu.itis.group001.kashapova.services.userDB.UserDBConnect;
-import ru.kpfu.itis.group001.kashapova.services.userDB.UserDBParam;
+import ru.kpfu.itis.group001.kashapova.services.userDB.ChangerUserTableService;
+import ru.kpfu.itis.group001.kashapova.services.userDB.UserTableConnect;
+import ru.kpfu.itis.group001.kashapova.services.userDB.UserTableParam;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,7 +17,7 @@ import java.io.IOException;
 @WebServlet("/deleteAccount")
 public class DeleteUserServlet extends HttpServlet {
     private String user_idCookie = "";
-    private UserDBConnect connnect = new UserDBConnect();
+    private UserTableConnect connnect = new UserTableConnect();
 
     public void init(HttpServletRequest req) {
         Cookie[] cookies = req.getCookies();
@@ -41,8 +41,8 @@ public class DeleteUserServlet extends HttpServlet {
         String password = req.getParameter("passwordCur3");
 
         int userID = ChangerCookieTokenService.returnUserID(user_idCookie);
-        if(MyHash.createHashPassword(password).equals(UserDBParam.returnStringParam(userID,"hash"))){
-            boolean success = ChangerUserDBService.deleteProfile(userID);
+        if(MyHash.createHashPassword(password).equals(UserTableParam.returnStringParam(userID,"hash"))){
+            boolean success = ChangerUserTableService.deleteProfile(userID);
             if(success){
                 resp.sendRedirect(getServletContext().getContextPath() + "/logout?delete=success");
             }

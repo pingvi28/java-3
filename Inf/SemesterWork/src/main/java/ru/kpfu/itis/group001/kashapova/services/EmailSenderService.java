@@ -1,4 +1,4 @@
-package ru.kpfu.itis.group001.kashapova.java_class;
+package ru.kpfu.itis.group001.kashapova.services;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
@@ -12,14 +12,14 @@ import java.util.Properties;
  * Sem 1
  */
 
-public class EmailSender {
+public class EmailSenderService {
 
-    public static EmailSender here = new EmailSender();;
+    public static EmailSenderService here = new EmailSenderService();;
 
     String from = "itis_di@mail.ru";
     Properties prop = System.getProperties();
 
-    private EmailSender() {
+    private EmailSenderService() {
         prop.put("mail.smtp.auth", true);
         prop.put("mail.smtp.starttls.enable", "true");
         prop.put("mail.smtp.host", "smtp.mail.ru");
@@ -52,7 +52,7 @@ public class EmailSender {
 
             Transport.send(message);
         } catch (MessagingException e) {
-            System.out.println("(ES#sendEmail) " + e.getMessage() + " " + e.getCause());
+            System.out.println("(ESS#sendEmail) " + e.getMessage() + " " + e.getCause());
         }
     }
 }

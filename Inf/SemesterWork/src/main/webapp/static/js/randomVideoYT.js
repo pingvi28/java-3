@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function () {
         let randomNum = Math.floor((Math.random() * video.length));
         $( this ).attr('src', "https://www.youtube.com/embed/" + video[randomNum] + "?showinfo=0&modestbranding=1&color=white&loop=1&playlist="+ video[randomNum]);
         iVideo.push(video[randomNum]);
-        console.log("sfddsf  " + video[randomNum])
         video.splice(randomNum, 1);
     });
 

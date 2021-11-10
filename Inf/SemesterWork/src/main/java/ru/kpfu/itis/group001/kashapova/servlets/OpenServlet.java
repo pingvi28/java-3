@@ -1,6 +1,6 @@
 package ru.kpfu.itis.group001.kashapova.servlets;
 
-import ru.kpfu.itis.group001.kashapova.java_class.VideoLink;
+import ru.kpfu.itis.group001.kashapova.java_class.VideoLinkArray;
 import ru.kpfu.itis.group001.kashapova.services.cookieTokenDB.ChangerCookieTokenService;
 import ru.kpfu.itis.group001.kashapova.services.videoDB.VideoDBConnect;
 import ru.kpfu.itis.group001.kashapova.services.videoDB.VideoDBParam;
@@ -38,7 +38,7 @@ public class OpenServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         VideoDBConnect videoDBConnect = new VideoDBConnect();
-        VideoLink.setVideoLink(VideoDBParam.returnVideoArray());
+        VideoLinkArray.setVideoLink(VideoDBParam.returnVideoArray());
         init(req);
         ChangerCookieTokenService cookieTokenDB = new ChangerCookieTokenService();
         if ( (user_idCookie != null) & rememberCookie) {

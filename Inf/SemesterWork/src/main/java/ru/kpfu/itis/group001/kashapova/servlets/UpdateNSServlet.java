@@ -2,8 +2,8 @@ package ru.kpfu.itis.group001.kashapova.servlets;
 
 import ru.kpfu.itis.group001.kashapova.java_class.MyHash;
 import ru.kpfu.itis.group001.kashapova.services.cookieTokenDB.ChangerCookieTokenService;
-import ru.kpfu.itis.group001.kashapova.services.userDB.ChangerUserDBService;
-import ru.kpfu.itis.group001.kashapova.services.userDB.UserDBParam;
+import ru.kpfu.itis.group001.kashapova.services.userDB.ChangerUserTableService;
+import ru.kpfu.itis.group001.kashapova.services.userDB.UserTableParam;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,7 +18,7 @@ public class UpdateNSServlet extends HttpServlet{
     private String user_idCookie = "";
 
     public void init(HttpServletRequest req) {
-        UserDBParam userDBParam = new UserDBParam();
+        UserTableParam userTableParam = new UserTableParam();
         Cookie[] cookies = req.getCookies();
         if(cookies!=null){
             for(Cookie c:cookies) {
@@ -39,14 +39,14 @@ public class UpdateNSServlet extends HttpServlet{
         String password = req.getParameter("passwordCur");
 
         int userID = ChangerCookieTokenService.returnUserID(user_idCookie);
-        if(MyHash.createHashPassword(password).equals(UserDBParam.returnStringParam(userID,"hash"))){
+        if(MyHash.createHashPassword(password).equals(UserTableParam.returnStringParam(userID,"hash"))){
             if(name.equals("null")){
-                name = UserDBParam.returnStringParam(userID,"name");
+                name = UserTableParam.returnStringParam(userID,"name");
             }
             if(surname.equals("null")){
-                name = UserDBParam.returnStringParam(userID,"surname");
+                name = UserTableParam.returnStringParam(userID,"surname");
             }
-            boolean success = ChangerUserDBService.updateProfileNS(userID,name,surname);
+            boolean success = ChangerUserTableService.updateProfileNS(userID,name,surname);
             if(success){
                 resp.sendRedirect(getServletContext().getContextPath() + "/userProfile?update=success");
             }

@@ -1,7 +1,7 @@
 package ru.kpfu.itis.group001.kashapova.servlets;
 
 import ru.kpfu.itis.group001.kashapova.services.cookieTokenDB.ChangerCookieTokenService;
-import ru.kpfu.itis.group001.kashapova.services.userDB.UserDBParam;
+import ru.kpfu.itis.group001.kashapova.services.userDB.UserTableParam;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,12 +30,12 @@ public class UserProfileServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         init(req);
-        UserDBParam userDBParam = new UserDBParam();
+        UserTableParam userTableParam = new UserTableParam();
         int userID = changerCookieTokenService.returnUserID(user_idCookie);
 
-        req.setAttribute("FirstName", UserDBParam.returnStringParam(userID,"name"));
-        req.setAttribute("fullName",UserDBParam.returnStringParam(userID,"surname") + " " + UserDBParam.returnStringParam(userID,"name"));
-        req.setAttribute("email",UserDBParam.returnStringParam(userID,"email"));
+        req.setAttribute("FirstName", UserTableParam.returnStringParam(userID,"name"));
+        req.setAttribute("fullName", UserTableParam.returnStringParam(userID,"surname") + " " + UserTableParam.returnStringParam(userID,"name"));
+        req.setAttribute("email", UserTableParam.returnStringParam(userID,"email"));
 
         req.getRequestDispatcher("/WEB-INF/view/indexUserProfile.jsp").forward(req, resp);
     }

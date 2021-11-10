@@ -1,6 +1,12 @@
 package ru.kpfu.itis.group001.kashapova.java_class;
+/**
+ * @author Kashapova Dilyara
+ * 11-001
+ * Sem 1
+ *
+ */
 
-public class VideoLink {
+public class VideoLinkArray {
     public static String[] videoLink = new String[0];
 
     public static String[] getVideoLink() {

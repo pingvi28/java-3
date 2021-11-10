@@ -23,7 +23,7 @@
         <div class="intro_inner">
             <h2 class="intro_title">Oй,ты попал в какие-то дебри<br/><br/></h2>
             <h3 class="intro_titleH3">солнце,вернись, пожалуйста... и больше не теряйся<br/><br/><br/></h3>
-            <button class="btn" type="text"><a href="${pageContext.request.contextPath}/corner">хочу домой...</a></button>
+            <button class="btn" type="text"><a href="${pageContext.request.contextPath}/openCorner">хочу домой...</a></button>
             <h3><br/><br/><br/><br/><br/></h3>
         </div>
     </div>

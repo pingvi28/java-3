@@ -2,10 +2,18 @@ package ru.kpfu.itis.group001.kashapova.services.userDB;
 
 import java.sql.*;
 
-public class UserDBParam extends UserDBConnect {
+/**
+ * @author Kashapova Dilyara
+ * 11-001
+ * Sem 1
+ *
+ * возращение небходимых полей из user_lamp_corner
+ */
+
+public class UserTableParam extends UserTableConnect {
 
     public static String returnStringParam(int user_id, String columnName){
-        try (Connection connection = DriverManager.getConnection(url, user, passwordDB);
+        try (Connection connection = DriverManager.getConnection(url, user, password);
              Statement statement = connection.createStatement()) {
             Class.forName("org.postgresql.Driver");
             ResultSet rs = statement.executeQuery("select * from " + tableWithUser + " where id=" + user_id +";");
@@ -18,7 +26,7 @@ public class UserDBParam extends UserDBConnect {
     }
 
     public static boolean returnConfirmFlag(int user_id){
-        try (Connection connection = DriverManager.getConnection(url, user, passwordDB);
+        try (Connection connection = DriverManager.getConnection(url, user, password);
              Statement statement = connection.createStatement()) {
             Class.forName("org.postgresql.Driver");
             ResultSet rs = statement.executeQuery("select * from " + tableWithUser + " where id=" + user_id +";");

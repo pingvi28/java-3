@@ -13,11 +13,15 @@ import java.sql.*;
  * при регистрации формируется токен (email), который записывается в отдельную таблицу
  */
 
-public class UserTokenEmailServices extends ConfirmUsersDBConnect {
-
+public class UserTokenEmailServices extends ConfirmUsersTableConnect {
+    /**
+     * формирует токен для проверки почты
+     * @param userID
+     * @param email
+     */
     public static void createToken( int userID,String email) {
-        try (Connection connection = DriverManager.getConnection(url, user, passwordDB);
-                PreparedStatement statement = connection.prepareStatement(
+        try (Connection connection = DriverManager.getConnection(url, user, password);
+             PreparedStatement statement = connection.prepareStatement(
                      "insert into " + tableConfirmUsers + " (user_id, token, data_registration) values (? ,? ,?) returning id;")) {
             Class.forName("org.postgresql.Driver");
             Date date = new Date();
@@ -32,7 +36,7 @@ public class UserTokenEmailServices extends ConfirmUsersDBConnect {
     }
 
     public static String returnToken(int user_id){
-        try (Connection connection = DriverManager.getConnection(url, user, passwordDB);
+        try (Connection connection = DriverManager.getConnection(url, user, password);
              Statement statement = connection.createStatement()) {
             Class.forName("org.postgresql.Driver");
             ResultSet rs = statement.executeQuery("select * from " + tableConfirmUsers + " where user_id=" + user_id +";");
@@ -46,7 +50,7 @@ public class UserTokenEmailServices extends ConfirmUsersDBConnect {
     }
 
     public static boolean deleteProfile(int user_id){
-        try (Connection connection = DriverManager.getConnection(url, user, passwordDB);
+        try (Connection connection = DriverManager.getConnection(url, user, password);
              PreparedStatement statement = connection.prepareStatement(
                      "delete from " + tableConfirmUsers + " where user_id= ? ;")) {
             //заранее экранирует значение

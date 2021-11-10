@@ -1,6 +1,6 @@
 package ru.kpfu.itis.group001.kashapova.java_class;
 
-import ru.kpfu.itis.group001.kashapova.services.userDB.ChangerUserDBService;
+import ru.kpfu.itis.group001.kashapova.services.userDB.ChangerUserTableService;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -13,7 +13,7 @@ import java.util.logging.Logger;
  * Sem 1
  *
  * генерация хеша через md5 + соль для любых подаваемых значений
- * (исп : password, token)
+ * (исп : password, token, user id(cookie))
  */
 
 public class MyHash {
@@ -31,7 +31,7 @@ public class MyHash {
             }
             return sb.toString();
         } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(ChangerUserDBService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ChangerUserTableService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }

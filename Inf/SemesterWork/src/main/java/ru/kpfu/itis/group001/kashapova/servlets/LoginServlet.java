@@ -2,8 +2,8 @@ package ru.kpfu.itis.group001.kashapova.servlets;
 
 import ru.kpfu.itis.group001.kashapova.services.cookieTokenDB.ChangerCookieTokenService;
 import ru.kpfu.itis.group001.kashapova.services.userDB.ChangeEmailConfirmedServices;
-import ru.kpfu.itis.group001.kashapova.services.userDB.ChangerUserDBService;
-import ru.kpfu.itis.group001.kashapova.services.userDB.UserDBParam;
+import ru.kpfu.itis.group001.kashapova.services.userDB.ChangerUserTableService;
+import ru.kpfu.itis.group001.kashapova.services.userDB.UserTableParam;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,7 +14,7 @@ import java.io.IOException;
 public class LoginServlet extends HttpServlet {
     private boolean remember = false;
     private ChangerCookieTokenService tokenService = new ChangerCookieTokenService();
-    private ChangerUserDBService connection = new ChangerUserDBService();
+    private ChangerUserTableService connection = new ChangerUserTableService();
     private String user_idCookie = "";
 
     public void init(HttpServletRequest req) {
@@ -59,7 +59,7 @@ public class LoginServlet extends HttpServlet {
             remember = true;
         }
 
-        boolean flag = UserDBParam.returnConfirmFlag(id);
+        boolean flag = UserTableParam.returnConfirmFlag(id);
         if (id > 0) {
             Cookie userCookie = new Cookie("user_id_cookie",  ChangerCookieTokenService.returnToken(id));
             userCookie.setMaxAge(60*60*24*5);

@@ -10,9 +10,11 @@ import java.sql.*;
  * @author Kashapova Dilyara
  * 11-001
  * Sem 1
+ *
+ * изменение/работа с таблицей - user_lamp_corner
  */
 
-public class ChangerUserDBService extends UserDBConnect {
+public class ChangerUserTableService extends UserTableConnect {
     /**
      * проверка при входе на сайт
      * @param email
@@ -20,7 +22,7 @@ public class ChangerUserDBService extends UserDBConnect {
      * @return
      */
     public int validate(String email, String password) {
-        try (Connection connection = DriverManager.getConnection(url, user, passwordDB);
+        try (Connection connection = DriverManager.getConnection(url, user, UserTableConnect.password);
              Statement statement = connection.createStatement()) {
             Class.forName("org.postgresql.Driver");
             ResultSet rs = statement.executeQuery("select * from " + tableWithUser + " where email='" + email + "';");
@@ -42,7 +44,7 @@ public class ChangerUserDBService extends UserDBConnect {
      * @return
      */
     public static boolean validate(String email) {
-        try (Connection connection = DriverManager.getConnection(url, user, passwordDB);
+        try (Connection connection = DriverManager.getConnection(url, user, password);
              Statement statement = connection.createStatement()) {
             Class.forName("org.postgresql.Driver");
             ResultSet rs = statement.executeQuery("select * from " + tableWithUser + " where email='" + email + "';");
@@ -55,7 +57,7 @@ public class ChangerUserDBService extends UserDBConnect {
     }
 
     public static int validateVK(String email) {
-        try (Connection connection = DriverManager.getConnection(url, user, passwordDB);
+        try (Connection connection = DriverManager.getConnection(url, user, password);
              Statement statement = connection.createStatement()) {
             Class.forName("org.postgresql.Driver");
             ResultSet rs = statement.executeQuery("select * from " + tableWithUser + " where email='" + email + "';");
@@ -76,7 +78,7 @@ public class ChangerUserDBService extends UserDBConnect {
      * @return
      */
     public String add(String name, String surname, String email, String password) {
-        try (Connection connection = DriverManager.getConnection(url, user, passwordDB);
+        try (Connection connection = DriverManager.getConnection(url, user, UserTableConnect.password);
              PreparedStatement statement = connection.prepareStatement(
                      "insert into " + tableWithUser + " (name ,surname, email, hash) values (? ,? ,?, ?) returning id;")) {
             //заранее экранирует значение
@@ -96,7 +98,7 @@ public class ChangerUserDBService extends UserDBConnect {
     }
 
     public static boolean updateProfileNS(int user_id, String changedName, String changedSurname){
-        try (Connection connection = DriverManager.getConnection(url, user, passwordDB);
+        try (Connection connection = DriverManager.getConnection(url, user, password);
              Statement statement = connection.createStatement()) {
             Class.forName("org.postgresql.Driver");
             ResultSet rs = statement.executeQuery("select * from " + tableWithUser + " where id=" + user_id +";");
@@ -113,7 +115,7 @@ public class ChangerUserDBService extends UserDBConnect {
     }
 
     public static boolean updateProfilePass(int user_id, String password){
-        try (Connection connection = DriverManager.getConnection(url, user, passwordDB);
+        try (Connection connection = DriverManager.getConnection(url, user, UserTableConnect.password);
              Statement statement = connection.createStatement()) {
             Class.forName("org.postgresql.Driver");
             ResultSet rs = statement.executeQuery("select * from " + tableWithUser + " where id=" + user_id +";");
@@ -135,7 +137,7 @@ public class ChangerUserDBService extends UserDBConnect {
         ChangerCookieTokenService.deleteProfile(user_id);
         UserTokenEmailServices.deleteProfile(user_id);
 
-        try (Connection connection = DriverManager.getConnection(url, user, passwordDB);
+        try (Connection connection = DriverManager.getConnection(url, user, password);
              PreparedStatement statement = connection.prepareStatement(
                      "delete from " + tableWithUser + " where id= ? ;")) {
             //заранее экранирует значение

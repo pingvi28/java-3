@@ -6,8 +6,8 @@ import ru.kpfu.itis.group001.kashapova.java_class.VK.VKOauthUser;
 import com.google.gson.Gson;
 import ru.kpfu.itis.group001.kashapova.services.cookieTokenDB.ChangerCookieTokenService;
 import ru.kpfu.itis.group001.kashapova.services.userDB.ChangeEmailConfirmedServices;
-import ru.kpfu.itis.group001.kashapova.services.userDB.ChangerUserDBService;
-import ru.kpfu.itis.group001.kashapova.services.userDB.UserDBConnect;
+import ru.kpfu.itis.group001.kashapova.services.userDB.ChangerUserTableService;
+import ru.kpfu.itis.group001.kashapova.services.userDB.UserTableConnect;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,7 +29,7 @@ public class VKAuthServlet extends HttpServlet {
     private final Gson gson = new Gson();
     protected static VKAccessToken accessToken = new VKAccessToken();
     protected static VKOauthUser vkOauthUser = new VKOauthUser();
-    private UserDBConnect connection = new UserDBConnect();
+    private UserTableConnect connection = new UserTableConnect();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -49,8 +49,8 @@ public class VKAuthServlet extends HttpServlet {
             resp.sendRedirect(getServletContext().getContextPath() + "/login?vkAuth=1");
         }
 
-        if(ChangerUserDBService.validate(vkOauthUser.email)){
-            int id = ChangerUserDBService.validateVK(vkOauthUser.email);
+        if(ChangerUserTableService.validate(vkOauthUser.email)){
+            int id = ChangerUserTableService.validateVK(vkOauthUser.email);
 
             Cookie userCookie = new Cookie("user_id_cookie",  ChangerCookieTokenService.returnToken(id));
             userCookie.setMaxAge(60*60*24*5);
@@ -70,7 +70,7 @@ public class VKAuthServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ChangerUserDBService dbconnection = new ChangerUserDBService();
+        ChangerUserTableService dbconnection = new ChangerUserTableService();
         String password = req.getParameter("password");
         if (password != null) {
             String userIdCookie = dbconnection.add(vkOauthUser.first_name, vkOauthUser.last_name, vkOauthUser.email, password);

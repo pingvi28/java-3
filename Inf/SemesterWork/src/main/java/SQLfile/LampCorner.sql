@@ -28,3 +28,9 @@ CREATE TABLE video_main
     id            BIGSERIAL PRIMARY KEY,
     video_link             VARCHAR(50)
 );
+
+CREATE TABLE favorite_video
+(
+    user_id INTEGER REFERENCES user_lamp_corner (id),
+    video_id INTEGER REFERENCES video_main (id)
+);

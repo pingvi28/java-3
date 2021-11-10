@@ -1,9 +1,9 @@
 package ru.kpfu.itis.group001.kashapova.servlets;
 
-import ru.kpfu.itis.group001.kashapova.services.confirmDB.ConfirmUserDBParam;
-import ru.kpfu.itis.group001.kashapova.java_class.EmailSender;
+import ru.kpfu.itis.group001.kashapova.services.confirmDB.ConfirmUserTableParam;
+import ru.kpfu.itis.group001.kashapova.services.EmailSenderService;
 import ru.kpfu.itis.group001.kashapova.services.cookieTokenDB.ChangerCookieTokenService;
-import ru.kpfu.itis.group001.kashapova.services.userDB.ChangerUserDBService;
+import ru.kpfu.itis.group001.kashapova.services.userDB.ChangerUserTableService;
 import ru.kpfu.itis.group001.kashapova.services.confirmDB.UserTokenEmailServices;
 
 import javax.servlet.ServletException;
@@ -24,7 +24,7 @@ public class SignUpServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         link = req.getScheme() + "://" + req.getServerName() + ":" + req.getServerPort();
-        ChangerUserDBService dbconnection = new ChangerUserDBService();
+        ChangerUserTableService dbconnection = new ChangerUserTableService();
         String name = req.getParameter("name");
         String surname = req.getParameter("surname");
         String email = req.getParameter("email");
@@ -40,12 +40,12 @@ public class SignUpServlet extends HttpServlet {
             link = link + getServletContext().getContextPath() + "/login?token=" +  UserTokenEmailServices.returnToken(ChangerCookieTokenService.returnUserID(userIdCookie));
 
             String sendTextEmail = "Hello!<br/> <br/> " +
-                    "Today is date |[" + ConfirmUserDBParam.returnDataRegistration(ChangerCookieTokenService.returnUserID(userIdCookie)) +
+                    "Today is date |[" + ConfirmUserTableParam.returnDataRegistration(ChangerCookieTokenService.returnUserID(userIdCookie)) +
                     " ]|, a certain user registered on the site 'Lamp corner' using your email. " +
                     "<br/>If it was you, then please confirm your email address by following this link: <br/>"
                     + link + "&confirm=true .\n ";
 
-            EmailSender.here.sendEmail(themeEmail, sendTextEmail,email);
+            EmailSenderService.here.sendEmail(themeEmail, sendTextEmail,email);
 
             resp.sendRedirect(getServletContext().getContextPath() + "/send");
         } else {

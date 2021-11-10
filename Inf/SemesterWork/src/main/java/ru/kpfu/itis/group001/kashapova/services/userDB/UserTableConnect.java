@@ -1,8 +1,8 @@
 package ru.kpfu.itis.group001.kashapova.services.userDB;
 
 import properties.DBproperties;
-import ru.kpfu.itis.group001.kashapova.services.confirmDB.ConfirmUsersDBConnect;
-import ru.kpfu.itis.group001.kashapova.services.cookieTokenDB.CookieTokenDBConnect;
+import ru.kpfu.itis.group001.kashapova.services.confirmDB.ConfirmUsersTableConnect;
+import ru.kpfu.itis.group001.kashapova.services.cookieTokenDB.CookieTokenTableConnect;
 
 import java.sql.Connection;
 import java.sql.Statement;
@@ -11,23 +11,22 @@ import java.sql.Statement;
  * @author Kashapova Dilyara
  * 11-001
  * Sem 1
+ *
+ *  конструктор для присваивания параметров бд и установления связи с user_lamp_corner
  */
 
-public class UserDBConnect {
+public class UserTableConnect {
     protected static Connection connection;
     protected static Statement statement;
     protected static String url;
     protected static String user;
-    protected static String passwordDB;
+    protected static String password;
     protected static String tableWithUser;
 
-    /**
-     * конструктор для присваивания параметров бд и установления связи
-     */
-    public UserDBConnect() {
+    public UserTableConnect() {
         url = DBproperties.url;
         user = DBproperties.user;
-        passwordDB = DBproperties.passwordDB;
+        password = DBproperties.passwordDB;
         tableWithUser = DBproperties.tableUserLampCorner;
 
         cookieTokenDBConnect();
@@ -35,10 +34,10 @@ public class UserDBConnect {
     }
 
     public void cookieTokenDBConnect(){
-        CookieTokenDBConnect cookieTokenDB = new CookieTokenDBConnect();
+        CookieTokenTableConnect cookieToken = new CookieTokenTableConnect();
     }
 
     public void confirmUsersDBConnect(){
-        ConfirmUsersDBConnect confirmUsersConnect = new ConfirmUsersDBConnect();
+        ConfirmUsersTableConnect confirmUsersConnect = new ConfirmUsersTableConnect();
     }
 }
