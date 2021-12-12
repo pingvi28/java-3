@@ -1,3 +1,17 @@
 pgbench -h localhost -p 5432 -U postgres -f C:\Users\79179\Desktop\pgbench\test1.sql -c 1 -T 300 -r PGbench_test
 
 pgbench -h rc1c-edkx6axwh3chvb4k.mdb.yandexcloud.net -p 6432 -U Di -f C:\Users\79179\Desktop\pgbench\test1.sql -c 1 -T 300 -r PGbench
+
+$ ssh -t -p 9600 -o IdentitiesOnly=yes -i ~/.ssh/<имя закрытого ключа> <ID виртуальной машины>.<имя пользователя>@serialssh.cloud.yandex.net
+
+$ ssh -t -p 9600 -o IdentitiesOnly=yes -i ~/.ssh/id_rsa epd0d4g1i4gv2803chir.79179@serialssh.cloud.yandex.net
+
+yc compute instance create \
+    --name my-yc-instance \
+    --network-interface subnet-name=my-yc-subnet-b,nat-ip-version=ipv4 \
+    --zone ru-central1-b \
+    --ssh-key C:\Users\79179\.ssh\id_rsa.pub
+
+pgbench -h rc1c-edkx6axwh3chvb4k.mdb.yandexcloud.net -p 6432 -U Di -f C:\Users\79179\Desktop\test1.sql -c 1 -T 300 -r Index
+
+$ ssh -i ~/.ssh/id_rsa  db_homework@pgbench
