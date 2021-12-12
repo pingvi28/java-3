@@ -1,0 +1,22 @@
+pgbench -h localhost -p 5432 -U postgres -f C:\Users\79179\Desktop\pgbench\test1.sql -c 1 -T 300 -r PGbench_test
+
+pgbench -h rc1c-edkx6axwh3chvb4k.mdb.yandexcloud.net -p 6432 -U Di -f C:\Users\79179\Desktop\pgbench\test1.sql -c 1 -T 300 -r PGbench
+
+vm
+-----------------------------
+$ ssh -i C:/Users/79179/.ssh/id_rsa db_homework@84.201.186.14
+---установка postgresql
+sudo apt update
+sudo apt install postgres
+----------
+* cd /home/db_homework
+db_homework@pgbench:~$ cat > test.sql
+\set id random(1,1000)
+select name from t1 where id = :id;
+db_homework@pgbench:~$ cd ../../
+db_homework@pgbench:/$ cd usr/bin/
+db_homework@pgbench:/usr/bin$ ls
+db_homework@pgbench: /usr/bin$ pgbench -h rc1c-edkx6axwh3chvb4k.mdb.yandexcloud.net -p 6432 -U Di -i -s 200 PGbench
+
+pgbench -h rc1c-edkx6axwh3chvb4k.mdb.yandexcloud.net -p 6432 -U Di -f /home/db_homework/test.sql -c 1 -T 300 -r PGbench
+
