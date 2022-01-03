@@ -3,14 +3,11 @@ package ru.kpfu.itis;
 import javax.net.ssl.HttpsURLConnection;
 import java.net.*;
 import java.io.*;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Server {
-    private static         int port = 8081;
+    private static int port = 8081;
     protected static String param1 = "";
     protected static String param2 = "";
     protected static boolean URLflag = false;
